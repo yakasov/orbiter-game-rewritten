@@ -68,19 +68,21 @@ button {
   margin-right: 10px;
 }
 
+.content {
+  display: flex;
+}
+
 .content-group {
-  max-width: 50%;
+  flex: 50%;
 }
 
 .left {
-  margin-right: 3%;
+  margin-right: 2%;
   text-align: left;
 }
 
 .right {
-  max-width: 40%;
-  width: 40%;
-  margin-left: 3%;
+  margin-left: 2%;
   text-align: right;
 }
 
@@ -229,6 +231,10 @@ hr {
 
 .upgrade-group {
   max-width: 60%;
+}
+
+.less-height {
+  line-height: 0.75;
 }
 
 .slim-width {

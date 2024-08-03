@@ -20,74 +20,93 @@
     </div>
 
     <div class="tab-bar" id="tab-bar">
-      <button class="tab-button" id="p1-button" onclick="showTab(1)">Period 1</button>
-      <button class="tab-button" id="p2-button" onclick="showTab(2)">Period 2</button>
-      <button class="tab-button hidden" id="p3-button" onclick="showTab(3)">Period 3</button>
-      <button class="tab-button hidden" id="p4-button" onclick="showTab(4)">Period 4</button>
-      <button class="tab-button hidden" id="p5-button" onclick="showTab(5)">Period 5</button>
-      <button class="tab-button hidden" id="p6-button" onclick="showTab(6)">Period 6</button>
-      <button class="tab-button hidden" id="p7-button" onclick="showTab(7)">Period 7</button>
-      <button class="tab-button hidden" id="p8-button" onclick="showTab(8)">Period 8</button>
+      <button class="tab-button hidden" id="p0-button" onclick="showTab(0)">
+        Elements
+      </button>
+      <button class="tab-button" id="p1-button" onclick="showTab(1)">
+        Period 1
+      </button>
+      <button class="tab-button hidden" id="p2-button" onclick="showTab(2)">
+        Period 2
+      </button>
+      <button class="tab-button hidden" id="p3-button" onclick="showTab(3)">
+        Period 3
+      </button>
+      <button class="tab-button hidden" id="p4-button" onclick="showTab(4)">
+        Period 4
+      </button>
+      <button class="tab-button hidden" id="p5-button" onclick="showTab(5)">
+        Period 5
+      </button>
+      <button class="tab-button hidden" id="p6-button" onclick="showTab(6)">
+        Period 6
+      </button>
+      <button class="tab-button hidden" id="p7-button" onclick="showTab(7)">
+        Period 7
+      </button>
+      <button class="tab-button hidden" id="p8-button" onclick="showTab(8)">
+        Period 8
+      </button>
+      <button class="tab-button" id="settings-button" onclick="showTab(9)">
+        Settings
+      </button>
     </div>
 
     <div id="tabs">
-      <div class="tab" id="p1-tab">
-        <div id="p1-producer1" class="fade-in content-group">
-          <div class="left">
-            <div class="subgroup">
-              <p class="no-margin">Hydrogen Gatherers</p>
-              <div>
-                <button id="p1-producer1-buy" onclick="p1BuyProducer(1)"></button>
-                <button id="p1-producer1-buyMax" onclick="p1BuyMax(1)">Buy max</button>
-              </div>
-            </div>
-            <div class="stat-group">
-              <p class="no-margin amount grey glow left" id="p1-producer1-amount">0</p>
-              <p class="no-margin amount grey glow right" id="p1-producer1-producing">0</p>
-            </div>
-            <div class="stat-group">
-              <p class="no-margin amount grey left" id="p1-producer1-elementDesc">0</p>
-              <p class="no-margin amount grey right" id="p1-producer1-elementAmount">0</p>
-            </div>
+      <div class="tab hidden" id="p0-tab"></div>
+
+      <div class="tab" id="p1-tab"></div>
+
+      <div class="tab hidden" id="p2-tab"></div>
+
+      <div class="tab hidden" id="p3-tab"></div>
+
+      <div class="tab hidden" id="p4-tab"></div>
+
+      <div class="tab hidden" id="p5-tab"></div>
+
+      <div class="tab hidden" id="p6-tab"></div>
+
+      <div class="tab hidden" id="p7-tab"></div>
+
+      <div class="tab hidden" id="p8-tab"></div>
+
+      <div class="tab hidden" id="p9-tab">
+        <div class="group center" id="settings_group">
+          <h2>Settings</h2>
+          <div class="center">
+            <p id="saveMessage">⠀</p>
+            <button onclick="saveGame(true);" style="margin-right: 24px">
+              Manual Save
+            </button>
+            <button onclick="exportSave();">Export Save</button>
+            <button onclick="importSave();">Import Save</button>
+            <input id="saveDataEntry" />
+            <button
+              class="scary"
+              onclick="resetSave();"
+              style="margin-left: 24px"
+            >
+              Reset Save
+            </button>
+            <p id="saveTime">⠀</p>
           </div>
         </div>
-      </div>
-
-      <div class="tab hidden" id="period2-tab">
-        
-      </div>
-
-      <div class="tab hidden" id="period3-tab">
-        
-      </div>
-
-      <div class="tab hidden" id="period4-tab">
-        
-      </div>
-
-      <div class="tab hidden" id="period5-tab">
-        
-      </div>
-
-      <div class="tab hidden" id="period6-tab">
-        
-      </div>
-
-      <div class="tab hidden" id="period7-tab">
-        
-      </div>
-
-      <div class="tab hidden" id="period8-tab">
-        
       </div>
     </div>
   </body>
 
   <script src="./js/break_eternity.js"></script>
 
-  <script src="./js/producers.js" defer></script>
-  <script src="./js/period1.js" defer></script>
+  <script src="./html/period1.js"></script>
+
+  <script src="./res/producers.js" defer></script>
+  <script src="./res/upgrades.js" defer></script>
+
   <script src="./js/common.js" defer></script>
+  <script src="./js/settings.js" defer></script>
+  <script src="./js/display.js" defer></script>
+  <script src="./js/period1.js" defer></script>
   <script src="./js/economy.js" defer></script>
   <script src="./js/game.js" defer></script>
 </html>
