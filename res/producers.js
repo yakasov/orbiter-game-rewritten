@@ -9,12 +9,12 @@ const producers = {
       scaling: new Decimal(1.02),
     },
     producer2: {
-      base: new Decimal(100),
+      base: new Decimal(150),
       cost: new Decimal(100),
       elementDesc: "He",
       display: "hunter",
       produces: new Decimal(7.5),
-      scaling: new Decimal(1.02),
+      scaling: new Decimal(1.01),
     },
   }
 };

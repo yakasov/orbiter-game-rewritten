@@ -2,11 +2,11 @@ const upgrades = {
   period1: {
     producer1: {
       upgrade1: {
-        cost: new Decimal(100),
+        cost: new Decimal(50),
         desc: "2x Hydrogen Gatherer speed"
       },
       upgrade2: {
-        cost: new Decimal(1_000),
+        cost: new Decimal(500),
         desc: "2x Hydrogen Gatherer speed again"
       },
       upgrade3: {

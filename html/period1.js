@@ -23,7 +23,7 @@ const PERIOD1TAB = `
           <p id="p1-producer1-upgrade1-button" class="no-margin less-height upgrade-button">Hydrogen Coffee Breaks</p>
           <p class="no-margin amount stat-group">2x Hydrogen Gatherer speed</p>
         </div>
-        <p id="p1-producer1-upgrade1-cost" class="no margin no-height amount right grey small">Costs 100 matter</p>
+        <p id="p1-producer1-upgrade1-cost" class="no margin no-height amount right grey small">Costs 50 matter</p>
       </div>
 
       <div id="p1-producer1-upgrade2" class="hidden">
@@ -31,7 +31,7 @@ const PERIOD1TAB = `
           <p id="p1-producer1-upgrade2-button" class="no-margin less-height upgrade-button">Hydrogen Coffee Super Caffeinator</p>
           <p class="no-margin amount stat-group">2x Hydrogen Gatherer speed again</p>
         </div>
-        <p id="p1-producer1-upgrade2-cost" class="no margin no-height amount right grey small">Costs 1,000 matter</p>
+        <p id="p1-producer1-upgrade2-cost" class="no margin no-height amount right grey small">Costs 500 matter</p>
       </div>
 
       <div id="p1-producer1-upgrade3" class="hidden">

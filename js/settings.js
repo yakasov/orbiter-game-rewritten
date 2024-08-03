@@ -2,16 +2,13 @@ function saveGame(showMessage = false) {
   // const achievementsToSave = achievements.map((a) => {
   //   return { id: a.id, achieved: a.achieved };
   // });
-  // const upgradesToSave = upgrades.map((u) => {
-  //   return { id: u.id, bought: u.bought };
-  // });
   const generalToSave = {
     matterBalance: ec.matterBalance,
   };
 
   // localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
   localStorage.setItem("producers", JSON.stringify(producers));
-  // localStorage.setItem("upgrades", JSON.stringify(upgradesToSave));
+  localStorage.setItem("upgrades", JSON.stringify(upgrades));
   localStorage.setItem("general", JSON.stringify(generalToSave));
 
   const saveTime = document.getElementById("saveTime");
@@ -25,6 +22,20 @@ function saveGame(showMessage = false) {
     const saveMessage = document.getElementById("saveMessage");
     saveMessage.innerText = "Saved game successfully!";
   }
+}
+
+function getSaveFromStorage() {
+  //   const loadedAchievements = JSON.parse(localStorage.getItem("achievements"));
+  const loadedProducers = JSON.parse(localStorage.getItem("producers"));
+  const loadedUpgrades = JSON.parse(localStorage.getItem("upgrades"));
+  const loadedGeneral = JSON.parse(localStorage.getItem("general"));
+
+  return {
+    // achievements: loadedAchievements,
+    producers: loadedProducers,
+    upgrades: loadedUpgrades,
+    general: loadedGeneral,
+  };
 }
 
 function resetSave() {
@@ -70,7 +81,7 @@ function exportSave() {
   const fullLoad = JSON.stringify({
     // achievements: JSON.parse(localStorage.getItem("achievements")),
     producers: JSON.parse(localStorage.getItem("producers")),
-    // upgrades: JSON.parse(localStorage.getItem("upgrades")),
+    upgrades: JSON.parse(localStorage.getItem("upgrades")),
     general: JSON.parse(localStorage.getItem("general")),
   });
   const encodedFullLoad = btoa(fullLoad);
@@ -98,11 +109,24 @@ function loadSave(data = null) {
         producers[period][producer].elementAmount = new Decimal(
           data.producers[period][producer].elementAmount
         );
+        producers[period][producer].cost = producers[period][producer].amount
+          .mul(producers[period][producer].base)
+          .pow(producers[period][producer].scaling);
       });
     });
   }
 
-  // General save mapping
+  if (data.upgrades) {
+    Object.keys(upgrades).forEach((period) => {
+      Object.keys(upgrades[period]).forEach((producer) => {
+        Object.keys(upgrades[period][producer]).forEach((upgrade) => {
+          upgrades[period][producer][upgrade].bought =
+            data.upgrades[period][producer][upgrade].bought;
+        });
+      });
+    });
+  }
+
   if (data.general) {
     ec.matterBalance = new Decimal(data["general"].matterBalance);
   }

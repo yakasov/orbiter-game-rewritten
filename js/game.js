@@ -24,4 +24,6 @@ function showTab(n) {
 }
 
 loadTabs();
+loadSave();
 setInterval(mainLoop, updateLoopInterval);
+setInterval(saveGame, saveGameInterval);
