@@ -31,6 +31,21 @@ button {
   color: #ccc;
 }
 
+.upgrade-button {
+  border: 1px solid #fff;
+  background-color: #111;
+  padding: 8px;
+  pointer-events: none;
+}
+
+.bought-button {
+  border: 1px solid #000;
+  background-color: #000;
+  padding: 8px;
+  padding-left: 0;
+  pointer-events: none;
+}
+
 .top-bar {
   padding: 1px;
   position: sticky;
@@ -59,6 +74,8 @@ button {
 }
 
 .tab {
+  margin-left: 1%;
+  margin-right: 1%;
   margin-top: 16px;
 }
 
@@ -237,7 +254,16 @@ hr {
   line-height: 0.75;
 }
 
+.no-height {
+  margin-top: 0;
+  line-height: 0.1;
+}
+
 .slim-width {
   display: inline-block;
   width: 90%;
+}
+
+.small {
+  font-size: 16px;
 }

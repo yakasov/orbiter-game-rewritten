@@ -37,6 +37,38 @@ class Display {
     }
   }
 
+  showUpgrade() {
+    if (currentTab === 0 || currentTab === 9) {
+      return;
+    }
+
+    Object.keys(upgrades[`period${currentTab}`]).forEach((k) => {
+      if (producers[`period${currentTab}`][k].amount.gte(1)) {
+        const upgrade1Div = document.getElementById(
+          `p${currentTab}-${k}-upgrade1`
+        );
+
+        if (upgrade1Div.classList.contains("hidden")) {
+          upgrade1Div.classList.remove("hidden");
+          upgrade1Div.classList.add("fade-in");
+        } else {
+          [2, 3].forEach((i) => {
+            if (upgrades[`period${currentTab}`][k][`upgrade${i - 1}`].bought) {
+              const div = document.getElementById(
+                `p${currentTab}-${k}-upgrade${i}`
+              );
+
+              if (div.classList.contains("hidden")) {
+                div.classList.remove("hidden");
+                div.classList.add("fade-in");
+              }
+            }
+          });
+        }
+      }
+    });
+  }
+
   displayBalance() {
     const el = document.getElementById("mainBalance");
     el.innerText = `You have ${f(ec.matterBalance)} matter.`;
@@ -51,5 +83,6 @@ class Display {
     this.displayBalance();
     this.displayProducing();
     this.showProducer();
+    this.showUpgrade();
   }
 }

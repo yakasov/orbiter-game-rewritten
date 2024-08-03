@@ -1,4 +1,4 @@
-const updateLoopInterval = 50;
+const updateLoopInterval = 20;
 const economyDivisor = 1000 / updateLoopInterval;
 const saveGameInterval = 10000;
 let currentTab = 1;

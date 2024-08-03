@@ -18,14 +18,28 @@ const PERIOD1TAB = `
         <p id="p1-producer1-elementAmount" class="no-margin amount grey right">0</p>
       </div>
 
-      <div class="subgroup">
-        <p class="no-margin less-height">Hydrogen Coffee Breaks</p>
+      <div id="p1-producer1-upgrade1" class="hidden">
+        <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 1)">
+          <p id="p1-producer1-upgrade1-button" class="no-margin less-height upgrade-button">Hydrogen Coffee Breaks</p>
+          <p class="no-margin amount stat-group">2x Hydrogen Gatherer speed</p>
+        </div>
+        <p id="p1-producer1-upgrade1-cost" class="no margin no-height amount right grey small">Costs 100 matter</p>
       </div>
-      <div class="subgroup">
-        <p class="no-margin less-height">Hydrogen Coffee Super Caffeinator</p>
+
+      <div id="p1-producer1-upgrade2" class="hidden">
+        <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 2)">
+          <p id="p1-producer1-upgrade2-button" class="no-margin less-height upgrade-button">Hydrogen Coffee Super Caffeinator</p>
+          <p class="no-margin amount stat-group">2x Hydrogen Gatherer speed again</p>
+        </div>
+        <p id="p1-producer1-upgrade2-cost" class="no margin no-height amount right grey small">Costs 1,000 matter</p>
       </div>
-      <div class="subgroup">
-        <p class="no-margin less-height">Hydrogen Scraper</p>
+
+      <div id="p1-producer1-upgrade3" class="hidden">
+        <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 3)">
+          <p id="p1-producer1-upgrade3-button" class="no-margin less-height upgrade-button">Hydrogen Scraper</p>
+          <p class="no-margin amount stat-group">Start collecting leftover Hydrogen</p>
+        </div>
+        <p id="p1-producer1-upgrade3-cost" class="no margin no-height amount right grey small">Costs 50,000 matter</p>
       </div>
     </div>
   </div>
