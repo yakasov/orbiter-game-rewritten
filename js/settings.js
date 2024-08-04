@@ -60,7 +60,7 @@ function importSave(encodedData = null) {
     if (
       // decodedData["achievements"] &&
       decodedData["producers"] &&
-      // decodedData["upgrades"] &&
+      decodedData["upgrades"] &&
       decodedData["general"]
     ) {
       loadSave(decodedData);
@@ -109,19 +109,43 @@ function loadSave(data = null) {
         producers[period][producer].elementAmount = new Decimal(
           data.producers[period][producer].elementAmount
         );
-        producers[period][producer].cost = producers[period][producer].amount
-          .mul(producers[period][producer].base)
-          .pow(producers[period][producer].scaling);
+
+        // Only update costs if amount > 0
+        // otherwise it will set cost to 0
+        if (data.producers[period][producer].amount > 0) {
+          producers[period][producer].cost = producers[period][producer].amount
+            .mul(producers[period][producer].base)
+            .pow(producers[period][producer].scaling);
+        }
       });
     });
   }
 
+  // Upgrades save mapping
   if (data.upgrades) {
     Object.keys(upgrades).forEach((period) => {
       Object.keys(upgrades[period]).forEach((producer) => {
         Object.keys(upgrades[period][producer]).forEach((upgrade) => {
+          if (!data.upgrades[period][producer]) return;
           upgrades[period][producer][upgrade].bought =
             data.upgrades[period][producer][upgrade].bought;
+
+          if (data.upgrades[period][producer][upgrade].bought) {
+            const pe = period.substr(-1);
+            const pr = producer.substr(-1);
+            const up = upgrade.substr(-1);
+
+            const button = document.getElementById(
+              `p${pe}-producer${pr}-upgrade${up}-button`
+            );
+            button.classList.remove("upgrade-button");
+            button.classList.add("bought-button");
+
+            const cost = document.getElementById(
+              `p${pe}-producer${pr}-upgrade${up}-cost`
+            );
+            cost.innerText = "Bought!";
+          }
         });
       });
     });

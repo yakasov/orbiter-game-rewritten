@@ -47,10 +47,14 @@ class Display {
         const upgrade1Div = document.getElementById(
           `p${currentTab}-${k}-upgrade1`
         );
+        const box = document.getElementById(
+          `p${currentTab}-${k}-upgrade1-box`
+        );
 
         if (upgrade1Div.classList.contains("hidden")) {
           upgrade1Div.classList.remove("hidden");
           upgrade1Div.classList.add("fade-in");
+          box.classList.add("upgrade-background", "fade-in");
         } else {
           [2, 3].forEach((i) => {
             if (upgrades[`period${currentTab}`][k][`upgrade${i - 1}`].bought) {
