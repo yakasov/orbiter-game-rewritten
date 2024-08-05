@@ -9,7 +9,7 @@ class Economy {
     if (this.matterBalance.gte(p.cost)) {
       this.matterBalance = this.matterBalance.sub(p.cost);
       p.amount = p.amount.add(1);
-      p.cost = p.amount.mul(p.base).pow(p.scaling);
+      p.cost = this.getCost(p);
     }
   }
 
@@ -18,8 +18,12 @@ class Economy {
     while (this.matterBalance.gte(p.cost)) {
       this.matterBalance = this.matterBalance.sub(p.cost);
       p.amount = p.amount.add(1);
-      p.cost = p.amount.mul(p.base).pow(p.scaling);
+      p.cost = this.getCost(p);
     }
+  }
+
+  getCost(p) {
+    return p.base.mul(p.scaling.pow(p.amount));
   }
 
   buyUpgrade(pe, pr, up) {

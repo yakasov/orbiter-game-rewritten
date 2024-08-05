@@ -12,19 +12,19 @@ const UPGRADES = {
         name: "Hydrogen Coffee Super Caffeinator"
       },
       upgrade3: {
-        cost: new Decimal(50_000),
+        cost: new Decimal(20_000),
         desc: "Start collecting leftover Hydrogen",
         name: "Hydrogen Scraper"
       }
     },
     producer2: {
       upgrade1: {
-        cost: new Decimal(500),
-        desc: "-0.05 Hunter cost scaling",
+        cost: new Decimal(1_000),
+        desc: "-0.18 Hunter cost scaling",
         name: "Helium Hunter Outsourcing"
       },
       upgrade2: {
-        cost: new Decimal(7_500),
+        cost: new Decimal(5_000),
         desc: "Each Gatherer boosts Hunters",
         name: "Monday Morning Coffee Group"
       },

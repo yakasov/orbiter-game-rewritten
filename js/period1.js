@@ -5,7 +5,7 @@ class Period1 {
 
   processUpgrades() {
     // Hydrogen Gatherers
-    let tmp = new Decimal(1);
+    let tmp = PRODUCERS.period1.producer1.producesBase;
     let ups = UPGRADES.period1.producer1;
     if (ups.upgrade1.bought) tmp = tmp.mul(1.5);
     if (ups.upgrade2.bought) tmp = tmp.mul(1.5);
@@ -13,12 +13,12 @@ class Period1 {
     PRODUCERS.period1.producer1.produces = tmp;
 
     // Helium Hunters
-    tmp = new Decimal(7.5);
+    tmp = PRODUCERS.period1.producer2.producesBase;
     ups = UPGRADES.period1.producer2;
     if (ups.upgrade1.bought)
-      PRODUCERS.period1.producer1.scaling = new Decimal(1.005);
+      PRODUCERS.period1.producer2.scaling = new Decimal(1.17);
     if (ups.upgrade2.bought)
-      tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.33));
+      tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.5));
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer2.produces = tmp;
   }

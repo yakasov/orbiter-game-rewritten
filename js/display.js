@@ -94,8 +94,25 @@ class Display {
     el.innerText = `producing ${f(ec.matterProducing)} matter /s`;
   }
 
+  displayProducer() {
+    if (EXCLUDEDTABS.includes(currentTab)) {
+      return;
+    }
+
+    Object.keys(PRODUCERS[`period${currentTab}`]).forEach((pk) => {
+      const p = PRODUCERS[`period${currentTab}`][pk];
+
+      // Support for changing costs after upgrading
+      p.cost = ec.getCost(p);
+
+      const el = document.getElementById(`p${currentTab}-${pk}-buy`);
+      el.innerText = `Buy 1 ${p.name} for ${f(p.cost)}`;
+    })
+  }
+
   updateLoop() {
     this.displayBalance();
+    this.displayProducer();
     this.displayProducing();
     this.showAchievements();
     this.showProducer();

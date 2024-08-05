@@ -110,13 +110,9 @@ function loadSave(data = null) {
           data.producers[period][producer].elementAmount
         );
 
-        // Only update costs if amount > 0
-        // otherwise it will set cost to 0
-        if (data.producers[period][producer].amount > 0) {
-          PRODUCERS[period][producer].cost = PRODUCERS[period][producer].amount
-            .mul(PRODUCERS[period][producer].base)
-            .pow(PRODUCERS[period][producer].scaling);
-        }
+        PRODUCERS[period][producer].cost = ec.getCost(
+          PRODUCERS[period][producer]
+        );
       });
     });
   }
