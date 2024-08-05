@@ -1,4 +1,4 @@
-const producers = {
+const PRODUCERS = {
   period1: {
     producer1: {
       base: new Decimal(10),
@@ -19,10 +19,10 @@ const producers = {
   }
 };
 
-Object.keys(producers).forEach((period) => {
-  Object.keys(producers[period]).forEach((producer) => {
-    producers[period][producer].amount = new Decimal(0);
-    producers[period][producer].elementAmount = new Decimal(0);
-    producers[period][producer].name = producer;
+Object.keys(PRODUCERS).forEach((period) => {
+  Object.keys(PRODUCERS[period]).forEach((producer) => {
+    PRODUCERS[period][producer].amount = new Decimal(0);
+    PRODUCERS[period][producer].elementAmount = new Decimal(0);
+    PRODUCERS[period][producer].name = producer;
   })
 })

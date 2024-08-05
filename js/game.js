@@ -1,8 +1,10 @@
+const ac = new Achievements();
 const ds = new Display();
 const ec = new Economy();
 const p1 = new Period1();
 
 function mainLoop() {
+  ac.updateLoop();
   ds.updateLoop();
   ec.updateLoop();
   p1.updateLoop();
@@ -10,6 +12,7 @@ function mainLoop() {
 
 function loadTabs() {
   document.getElementById("p1-tab").innerHTML = PERIOD1TAB;
+  document.getElementById("p9-tab").innerHTML = ACHIEVEMENTSTAB;
 }
 
 function showTab(n) {
@@ -25,5 +28,5 @@ function showTab(n) {
 
 loadTabs();
 loadSave();
-setInterval(mainLoop, updateLoopInterval);
-setInterval(saveGame, saveGameInterval);
+setInterval(mainLoop, UPDATELOOPINTERVAL);
+setInterval(saveGame, SAVEGAMEINTERVAL);

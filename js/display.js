@@ -16,15 +16,26 @@ class Display {
     )} ${f(pr.elementDesc)}`;
   }
 
+  showAchievements() {
+    // Actually just change their border and colouring
+    Object.keys(ACHIEVEMENTS).forEach((a) => {
+      const box = document.getElementById(`ach${a}`);
+      if (ACHIEVEMENTS[a].achieved && box.classList.contains("unachieved")) {
+        box.classList.remove("unachieved", "dashed");
+        box.classList.add("solid");
+      }
+    })
+  }
+
   showProducer() {
-    if (currentTab === 0 || currentTab === 9) {
+    if (EXCLUDEDTABS.includes(currentTab)) {
       return;
     }
 
     const producerLength =
-      Object.values(producers[`period${currentTab}`]).length - 1;
+      Object.values(PRODUCERS[`period${currentTab}`]).length - 1;
     for (const [i, v] of Object.values(
-      producers[`period${currentTab}`]
+      PRODUCERS[`period${currentTab}`]
     ).entries()) {
       if (i < producerLength && v.amount.gte(1)) {
         const div = document.getElementById(`p${currentTab}-producer${i + 2}`);
@@ -38,12 +49,12 @@ class Display {
   }
 
   showUpgrade() {
-    if (currentTab === 0 || currentTab === 9) {
+    if (EXCLUDEDTABS.includes(currentTab)) {
       return;
     }
 
-    Object.keys(upgrades[`period${currentTab}`]).forEach((k) => {
-      if (producers[`period${currentTab}`][k].amount.gte(1)) {
+    Object.keys(UPGRADES[`period${currentTab}`]).forEach((k) => {
+      if (PRODUCERS[`period${currentTab}`][k].amount.gte(1)) {
         const upgrade1Div = document.getElementById(
           `p${currentTab}-${k}-upgrade1`
         );
@@ -57,7 +68,7 @@ class Display {
           box.classList.add("upgrade-background", "fade-in");
         } else {
           [2, 3].forEach((i) => {
-            if (upgrades[`period${currentTab}`][k][`upgrade${i - 1}`].bought) {
+            if (UPGRADES[`period${currentTab}`][k][`upgrade${i - 1}`].bought) {
               const div = document.getElementById(
                 `p${currentTab}-${k}-upgrade${i}`
               );
@@ -86,6 +97,7 @@ class Display {
   updateLoop() {
     this.displayBalance();
     this.displayProducing();
+    this.showAchievements();
     this.showProducer();
     this.showUpgrade();
   }

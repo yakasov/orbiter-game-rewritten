@@ -1,6 +1,10 @@
-const updateLoopInterval = 20;
-const economyDivisor = 1000 / updateLoopInterval;
-const saveGameInterval = 10000;
+// Nothing in here can require other files!!!
+// This gets load first (after break_eternity.js)
+
+const UPDATELOOPINTERVAL = 20;
+const ECONOMYDIVISOR = 1000 / UPDATELOOPINTERVAL;
+const SAVEGAMEINTERVAL = 10000;
+const EXCLUDEDTABS = [0, 9, 10];
 let currentTab = 1;
 
 function f(n, decimals = 2) {

@@ -1,40 +1,46 @@
-const upgrades = {
+const UPGRADES = {
   period1: {
     producer1: {
       upgrade1: {
         cost: new Decimal(50),
-        desc: "1.5x Hydrogen Gatherer speed"
+        desc: "1.5x Hydrogen Gatherer speed",
+        name: "Hydrogen Coffee Breaks"
       },
       upgrade2: {
         cost: new Decimal(500),
-        desc: "1.5x Hydrogen Gatherer speed again"
+        desc: "1.5x Hydrogen Gatherer speed again",
+        name: "Hydrogen Coffee Super Caffeinator"
       },
       upgrade3: {
         cost: new Decimal(50_000),
-        desc: "Start collecting leftover Hydrogen"
+        desc: "Start collecting leftover Hydrogen",
+        name: "Hydrogen Scraper"
       }
     },
     producer2: {
       upgrade1: {
         cost: new Decimal(500),
-        desc: "-0.05 Hunter cost scaling"
+        desc: "-0.05 Hunter cost scaling",
+        name: "Helium Hunter Outsourcing"
       },
       upgrade2: {
         cost: new Decimal(7_500),
-        desc: "Each Gatherer boosts Hunters"
+        desc: "Each Gatherer boosts Hunters",
+        name: "Monday Morning Coffee Group"
       },
       upgrade3: {
         cost: new Decimal(500_000),
-        desc: "Start collecting leftover Helium"
+        desc: "Start collecting leftover Helium",
+        name: "Helium Catcher"
       }
     }
   }
 }
 
-Object.keys(upgrades).forEach((period) => {
-  Object.keys(upgrades[period]).forEach((producer) => {
-    Object.keys(upgrades[period][producer]).forEach((producerUpgrade) => {
-      upgrades[period][producer][producerUpgrade].bought = false;
+Object.keys(UPGRADES).forEach((period) => {
+  Object.keys(UPGRADES[period]).forEach((producer) => {
+    Object.keys(UPGRADES[period][producer]).forEach((producerUpgrade) => {
+      UPGRADES[period][producer][producerUpgrade].bought = false;
     })
   })
 })

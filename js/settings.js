@@ -7,8 +7,8 @@ function saveGame(showMessage = false) {
   };
 
   // localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
-  localStorage.setItem("producers", JSON.stringify(producers));
-  localStorage.setItem("upgrades", JSON.stringify(upgrades));
+  localStorage.setItem("producers", JSON.stringify(PRODUCERS));
+  localStorage.setItem("upgrades", JSON.stringify(UPGRADES));
   localStorage.setItem("general", JSON.stringify(generalToSave));
 
   const saveTime = document.getElementById("saveTime");
@@ -101,21 +101,21 @@ function loadSave(data = null) {
 
   // Producers save mapping
   if (data.producers) {
-    Object.keys(producers).forEach((period) => {
-      Object.keys(producers[period]).forEach((producer) => {
-        producers[period][producer].amount = new Decimal(
+    Object.keys(PRODUCERS).forEach((period) => {
+      Object.keys(PRODUCERS[period]).forEach((producer) => {
+        PRODUCERS[period][producer].amount = new Decimal(
           data.producers[period][producer].amount
         );
-        producers[period][producer].elementAmount = new Decimal(
+        PRODUCERS[period][producer].elementAmount = new Decimal(
           data.producers[period][producer].elementAmount
         );
 
         // Only update costs if amount > 0
         // otherwise it will set cost to 0
         if (data.producers[period][producer].amount > 0) {
-          producers[period][producer].cost = producers[period][producer].amount
-            .mul(producers[period][producer].base)
-            .pow(producers[period][producer].scaling);
+          PRODUCERS[period][producer].cost = PRODUCERS[period][producer].amount
+            .mul(PRODUCERS[period][producer].base)
+            .pow(PRODUCERS[period][producer].scaling);
         }
       });
     });
@@ -123,11 +123,11 @@ function loadSave(data = null) {
 
   // Upgrades save mapping
   if (data.upgrades) {
-    Object.keys(upgrades).forEach((period) => {
-      Object.keys(upgrades[period]).forEach((producer) => {
-        Object.keys(upgrades[period][producer]).forEach((upgrade) => {
+    Object.keys(UPGRADES).forEach((period) => {
+      Object.keys(UPGRADES[period]).forEach((producer) => {
+        Object.keys(UPGRADES[period][producer]).forEach((upgrade) => {
           if (!data.upgrades[period][producer]) return;
-          upgrades[period][producer][upgrade].bought =
+          UPGRADES[period][producer][upgrade].bought =
             data.upgrades[period][producer][upgrade].bought;
 
           if (data.upgrades[period][producer][upgrade].bought) {

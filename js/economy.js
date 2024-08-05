@@ -5,7 +5,7 @@ class Economy {
   }
 
   buyProducer(pe, pr) {
-    const p = producers[`period${pe}`][`producer${pr}`];
+    const p = PRODUCERS[`period${pe}`][`producer${pr}`];
     if (this.matterBalance.gte(p.cost)) {
       this.matterBalance = this.matterBalance.sub(p.cost);
       p.amount = p.amount.add(1);
@@ -14,7 +14,7 @@ class Economy {
   }
 
   buyMax(pe, pr) {
-    const p = producers[`period${pe}`][`producer${pr}`];
+    const p = PRODUCERS[`period${pe}`][`producer${pr}`];
     while (this.matterBalance.gte(p.cost)) {
       this.matterBalance = this.matterBalance.sub(p.cost);
       p.amount = p.amount.add(1);
@@ -23,7 +23,7 @@ class Economy {
   }
 
   buyUpgrade(pe, pr, up) {
-    const u = upgrades[`period${pe}`][`producer${pr}`][`upgrade${up}`];
+    const u = UPGRADES[`period${pe}`][`producer${pr}`][`upgrade${up}`];
     if (this.matterBalance.gte(u.cost)) {
       this.matterBalance = this.matterBalance.sub(u.cost);
       u.bought = true;
@@ -43,7 +43,7 @@ class Economy {
 
   updateBalance() {
     this.matterBalance = this.matterBalance.add(
-      this.matterProducing.div(economyDivisor)
+      this.matterProducing.div(ECONOMYDIVISOR)
     );
   }
 

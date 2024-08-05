@@ -32,6 +32,7 @@ button {
 }
 
 .upgrade-button {
+  font-size: 16px;
   border: 1px solid #fff;
   background-color: #111;
   padding: 8px;
@@ -39,6 +40,7 @@ button {
 }
 
 .bought-button {
+  font-size: 16px;
   border: unset;
   background-color: unset;
   padding: 8px;
@@ -48,7 +50,7 @@ button {
 
 .upgrade-background {
   margin-top: 32px;
-  padding: 0 12px;
+  padding: 0 8px;
   border: 1px dashed #333;
 }
 
