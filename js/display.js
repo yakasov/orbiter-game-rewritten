@@ -8,12 +8,18 @@ class Display {
       pr.amount,
       0
     )} ${pr.display}s`;
+
     document.getElementById(
       `p${pe}-${pr.name}-producing`
     ).innerText = `producing ${f(pr.produces.mul(pr.amount))}/s`;
-    document.getElementById(`p${pe}-${pr.name}-elementDesc`).innerText = `${f(
-      pr.elementAmount
-    )} ${f(pr.elementDesc)}`;
+
+    document.getElementById(`p${pe}-${pr.name}-elementAmount`).innerText = `${f(
+      ELEMENTS[pr.element].amount
+    )} ${f(ELEMENTS[pr.element].desc)}`;
+
+    document.getElementById(
+      `p${pe}-${pr.name}-elementProducing`
+    ).innerText = `saving ${f(ELEMENTS[pr.element].producing)}/s`;
   }
 
   showAchievements() {
@@ -24,7 +30,7 @@ class Display {
         box.classList.remove("unachieved", "dashed");
         box.classList.add("solid");
       }
-    })
+    });
   }
 
   showProducer() {
@@ -58,9 +64,7 @@ class Display {
         const upgrade1Div = document.getElementById(
           `p${currentTab}-${k}-upgrade1`
         );
-        const box = document.getElementById(
-          `p${currentTab}-${k}-upgrade1-box`
-        );
+        const box = document.getElementById(`p${currentTab}-${k}-upgrade-box`);
 
         if (upgrade1Div.classList.contains("hidden")) {
           upgrade1Div.classList.remove("hidden");
@@ -80,6 +84,29 @@ class Display {
             }
           });
         }
+      }
+    });
+  }
+
+  showElement() {
+    if (EXCLUDEDTABS.includes(currentTab)) {
+      return;
+    }
+
+    Object.keys(ELEMENTS).forEach((e) => {
+      if (ELEMENTS[e].tab === currentTab && ELEMENTS[e].upgrade1.bought) {
+        [2, 3].forEach((i) => {
+          if (ELEMENTS[e][`upgrade${i - 1}`].bought) {
+            const div = document.getElementById(
+              `p${currentTab}-${e}-upgrade${i}`
+            );
+
+            if (div.classList.contains("hidden")) {
+              div.classList.remove("hidden");
+              div.classList.add("fade-in");
+            }
+          }
+        });
       }
     });
   }
@@ -107,7 +134,7 @@ class Display {
 
       const el = document.getElementById(`p${currentTab}-${pk}-buy`);
       el.innerText = `Buy 1 ${p.name} for ${f(p.cost)}`;
-    })
+    });
   }
 
   updateLoop() {
@@ -115,6 +142,7 @@ class Display {
     this.displayProducer();
     this.displayProducing();
     this.showAchievements();
+    this.showElement();
     this.showProducer();
     this.showUpgrade();
   }

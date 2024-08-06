@@ -1,14 +1,51 @@
 function saveGame(showMessage = false) {
-  // const achievementsToSave = achievements.map((a) => {
-  //   return { id: a.id, achieved: a.achieved };
-  // });
+  const achievementsToSave = {};
+  Object.keys(ACHIEVEMENTS).forEach((achievement) => {
+    achievementsToSave[achievement] = ACHIEVEMENTS[achievement].achieved;
+  });
+
+  const producersToSave = {};
+  Object.keys(PRODUCERS).forEach((period) => {
+    producersToSave[period] = {};
+    Object.keys(PRODUCERS[period]).forEach((producer) => {
+      producersToSave[period][producer] = {
+        amount: PRODUCERS[period][producer].amount,
+      };
+    });
+  });
+
+  const upgradesToSave = {};
+  Object.keys(UPGRADES).forEach((period) => {
+    upgradesToSave[period] = {};
+    Object.keys(UPGRADES[period]).forEach((producer) => {
+      upgradesToSave[period][producer] = {};
+      Object.keys(UPGRADES[period][producer]).forEach((upgrade) => {
+        upgradesToSave[period][producer][upgrade] = {
+          bought: UPGRADES[period][producer][upgrade].bought,
+        };
+      });
+    });
+  });
+
+  const elementsToSave = {};
+  Object.keys(ELEMENTS).forEach((element) => {
+    elementsToSave[element] = {
+      amount: ELEMENTS[element].amount,
+      enabled: ELEMENTS[element].enabled,
+      upgrade1: ELEMENTS[element].upgrade1.bought ?? false,
+      upgrade2: ELEMENTS[element].upgrade2.bought ?? false,
+      upgrade3: ELEMENTS[element].upgrade3.bought ?? false,
+    }
+  })
+
   const generalToSave = {
     matterBalance: ec.matterBalance,
   };
 
-  // localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
-  localStorage.setItem("producers", JSON.stringify(PRODUCERS));
-  localStorage.setItem("upgrades", JSON.stringify(UPGRADES));
+  localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
+  localStorage.setItem("producers", JSON.stringify(producersToSave));
+  localStorage.setItem("upgrades", JSON.stringify(upgradesToSave));
+  localStorage.setItem("elements", JSON.stringify(elementsToSave));
   localStorage.setItem("general", JSON.stringify(generalToSave));
 
   const saveTime = document.getElementById("saveTime");
@@ -25,15 +62,17 @@ function saveGame(showMessage = false) {
 }
 
 function getSaveFromStorage() {
-  //   const loadedAchievements = JSON.parse(localStorage.getItem("achievements"));
+  const loadedAchievements = JSON.parse(localStorage.getItem("achievements"));
   const loadedProducers = JSON.parse(localStorage.getItem("producers"));
   const loadedUpgrades = JSON.parse(localStorage.getItem("upgrades"));
+  const loadedElements = JSON.parse(localStorage.getItem("elements"));
   const loadedGeneral = JSON.parse(localStorage.getItem("general"));
 
   return {
-    // achievements: loadedAchievements,
+    achievements: loadedAchievements,
     producers: loadedProducers,
     upgrades: loadedUpgrades,
+    elements: loadedElements,
     general: loadedGeneral,
   };
 }
@@ -58,9 +97,10 @@ function importSave(encodedData = null) {
   try {
     const decodedData = JSON.parse(atob(encodedData));
     if (
-      // decodedData["achievements"] &&
+      decodedData["achievements"] &&
       decodedData["producers"] &&
       decodedData["upgrades"] &&
+      decodedData["elements"] &&
       decodedData["general"]
     ) {
       loadSave(decodedData);
@@ -79,9 +119,10 @@ function exportSave() {
   saveGame();
 
   const fullLoad = JSON.stringify({
-    // achievements: JSON.parse(localStorage.getItem("achievements")),
+    achievements: JSON.parse(localStorage.getItem("achievements")),
     producers: JSON.parse(localStorage.getItem("producers")),
     upgrades: JSON.parse(localStorage.getItem("upgrades")),
+    elements: JSON.parse(localStorage.getItem("elements")),
     general: JSON.parse(localStorage.getItem("general")),
   });
   const encodedFullLoad = btoa(fullLoad);
@@ -99,15 +140,19 @@ function loadSave(data = null) {
   if (!data) data = getSaveFromStorage();
   if (data == {}) return;
 
+  // Achievements save mapping
+  if (data.achievements) {
+    Object.keys(ACHIEVEMENTS).forEach((a) => {
+      ACHIEVEMENTS[a].achieved = data.achievements[a];
+    });
+  }
+
   // Producers save mapping
   if (data.producers) {
     Object.keys(PRODUCERS).forEach((period) => {
       Object.keys(PRODUCERS[period]).forEach((producer) => {
         PRODUCERS[period][producer].amount = new Decimal(
           data.producers[period][producer].amount
-        );
-        PRODUCERS[period][producer].elementAmount = new Decimal(
-          data.producers[period][producer].elementAmount
         );
 
         PRODUCERS[period][producer].cost = ec.getCost(
@@ -143,6 +188,34 @@ function loadSave(data = null) {
             cost.innerText = "Bought!";
           }
         });
+      });
+    });
+  }
+
+  // Elements save mapping
+  if (data.elements) {
+    Object.keys(ELEMENTS).forEach((e) => {
+      ELEMENTS[e].amount = new Decimal(data.elements[e].amount);
+      ELEMENTS[e].enabled = data.elements[e].enabled;
+
+      // If elements don't strictly have 3 upgrades
+      // then this needs to be changed
+      [1, 2, 3].forEach((i) => {
+        ELEMENTS[e][`upgrade${i}`].bought =
+          data.elements[e][`upgrade${i}`];
+
+        if (ELEMENTS[e][`upgrade${i}`].bought) {
+          const button = document.getElementById(
+            `p${ELEMENTS[e].tab}-${e}-upgrade${i}-button`
+          );
+          button.classList.remove("upgrade-button");
+          button.classList.add("bought-button");
+
+          const cost = document.getElementById(
+            `p${ELEMENTS[e].tab}-${e}-upgrade${i}-cost`
+          );
+          cost.innerText = "Bought!";
+        }
       });
     });
   }

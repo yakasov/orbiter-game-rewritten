@@ -14,33 +14,97 @@ const PERIOD1TAB = `
         <p id="p1-producer1-producing" class="no-margin amount grey glow right">0</p>
       </div>
       <div class="stat-group">
-        <p id="p1-producer1-elementDesc" class="no-margin amount grey left">0</p>
-        <p id="p1-producer1-elementAmount" class="no-margin amount grey right">0</p>
+        <p id="p1-producer1-elementAmount" class="no-margin amount grey left">0</p>
+        <p id="p1-producer1-elementProducing" class="no-margin amount grey right">0</p>
       </div>
 
-      <div id="p1-producer1-upgrade1-box">
+      <div id="p1-producer1-upgrade-box">
         <div id="p1-producer1-upgrade1" class="hidden">
           <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 1)">
-            <p id="p1-producer1-upgrade1-button" class="no-margin less-height upgrade-button">${UPGRADES.period1.producer1.upgrade1.name}</p>
-            <p class="no-margin amount stat-group">${UPGRADES.period1.producer1.upgrade1.desc}</p>
+            <p id="p1-producer1-upgrade1-button" class="no-margin less-height upgrade-button">${
+              UPGRADES.period1.producer1.upgrade1.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              UPGRADES.period1.producer1.upgrade1.desc
+            }</p>
           </div>
-          <p id="p1-producer1-upgrade1-cost" class="no margin no-height amount right grey small">Costs ${f(UPGRADES.period1.producer1.upgrade1.cost)} matter</p>
+          <p id="p1-producer1-upgrade1-cost" class="no margin no-height amount right grey small">Costs ${f(
+            UPGRADES.period1.producer1.upgrade1.cost
+          )} matter</p>
         </div>
 
         <div id="p1-producer1-upgrade2" class="hidden">
           <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 2)">
-            <p id="p1-producer1-upgrade2-button" class="no-margin less-height upgrade-button">${UPGRADES.period1.producer1.upgrade2.name}</p>
-            <p class="no-margin amount stat-group">${UPGRADES.period1.producer1.upgrade2.desc}</p>
+            <p id="p1-producer1-upgrade2-button" class="no-margin less-height upgrade-button">${
+              UPGRADES.period1.producer1.upgrade2.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              UPGRADES.period1.producer1.upgrade2.desc
+            }</p>
           </div>
-          <p id="p1-producer1-upgrade2-cost" class="no margin no-height amount right grey small">Costs ${f(UPGRADES.period1.producer1.upgrade2.cost)} matter</p>
+          <p id="p1-producer1-upgrade2-cost" class="no margin no-height amount right grey small">Costs ${f(
+            UPGRADES.period1.producer1.upgrade2.cost
+          )} matter</p>
         </div>
 
         <div id="p1-producer1-upgrade3" class="hidden">
           <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 3)">
-            <p id="p1-producer1-upgrade3-button" class="no-margin less-height upgrade-button">${UPGRADES.period1.producer1.upgrade3.name}</p>
-            <p class="no-margin amount stat-group">${UPGRADES.period1.producer1.upgrade3.desc}</p>
+            <p id="p1-producer1-upgrade3-button" class="no-margin less-height upgrade-button">${
+              UPGRADES.period1.producer1.upgrade3.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              UPGRADES.period1.producer1.upgrade3.desc
+            }</p>
           </div>
-          <p id="p1-producer1-upgrade3-cost" class="no margin no-height amount right grey small">Costs ${f(UPGRADES.period1.producer1.upgrade3.cost)} matter</p>
+          <p id="p1-producer1-upgrade3-cost" class="no margin no-height amount right grey small">Costs ${f(
+            UPGRADES.period1.producer1.upgrade3.cost
+          )} matter</p>
+        </div>
+      </div>
+
+      <div id="p1-hydrogen-element-box" class="hidden">
+        <br><br>
+        <h4 class="center">You are now saving Hydrogen.</h4>
+        <div id="p1-hydrogen-upgrade1">
+          <div class="subgroup" onclick="ec.buyElement('hydrogen', 1)">
+            <p id="p1-hydrogen-upgrade1-button" class="no-margin less-height upgrade-button">${
+              ELEMENTS.hydrogen.upgrade1.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              ELEMENTS.hydrogen.upgrade1.desc
+            }</p>
+          </div>
+          <p id="p1-hydrogen-upgrade1-cost" class="no margin no-height amount right grey small">Costs ${f(
+            ELEMENTS.hydrogen.upgrade1.cost
+          )} H</p>
+        </div>
+
+        <div id="p1-hydrogen-upgrade2" class="hidden">
+          <div class="subgroup" onclick=ec.buyElement('hydrogen', 2)">
+            <p id="p1-hydrogen-upgrade2-button" class="no-margin less-height upgrade-button">${
+              ELEMENTS.hydrogen.upgrade2.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              ELEMENTS.hydrogen.upgrade2.desc
+            }</p>
+          </div>
+          <p id="p1-hydrogen-upgrade2-cost" class="no margin no-height amount right grey small">Costs ${f(
+            ELEMENTS.hydrogen.upgrade2.cost
+          )} H</p>
+        </div>
+
+        <div id="p1-hydrogen-upgrade3" class="hidden">
+          <div class="subgroup" onclick="ec.buyElement('hydrogen', 3)">
+            <p id="p1-hydrogen-upgrade3-button" class="no-margin less-height upgrade-button">${
+              ELEMENTS.hydrogen.upgrade3.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              ELEMENTS.hydrogen.upgrade3.desc
+            }</p>
+          </div>
+          <p id="p1-hydrogen-upgrade3-cost" class="no margin no-height amount right grey small">Costs ${f(
+            ELEMENTS.hydrogen.upgrade3.cost
+          )} H</p>
         </div>
       </div>
     </div>
@@ -60,36 +124,54 @@ const PERIOD1TAB = `
         <p id="p1-producer2-producing" class="no-margin amount grey glow right">0</p>
       </div>
       <div class="stat-group">
-        <p id="p1-producer2-elementDesc" class="no-margin amount grey left">0</p>
-        <p id="p1-producer2-elementAmount" class="no-margin amount grey right">0</p>
+        <p id="p1-producer2-elementAmount" class="no-margin amount grey left">0</p>
+        <p id="p1-producer2-elementProducing" class="no-margin amount grey right">0</p>
       </div>
 
-      <div id="p1-producer2-upgrade1-box">
+      <div id="p1-producer2-upgrade-box">
         <div id="p1-producer2-upgrade1" class="hidden">
           <div class="subgroup" onclick="ec.buyUpgrade(1, 2, 1)">
-            <p id="p1-producer2-upgrade1-button" class="no-margin less-height upgrade-button">${UPGRADES.period1.producer2.upgrade1.name}</p>
-            <p class="no-margin amount stat-group">${UPGRADES.period1.producer2.upgrade1.desc}</p>
+            <p id="p1-producer2-upgrade1-button" class="no-margin less-height upgrade-button">${
+              UPGRADES.period1.producer2.upgrade1.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              UPGRADES.period1.producer2.upgrade1.desc
+            }</p>
           </div>
-          <p id="p1-producer2-upgrade1-cost" class="no margin no-height amount right grey small">Costs ${f(UPGRADES.period1.producer2.upgrade1.cost)} matter</p>
+          <p id="p1-producer2-upgrade1-cost" class="no margin no-height amount right grey small">Costs ${f(
+            UPGRADES.period1.producer2.upgrade1.cost
+          )} matter</p>
         </div>
 
         <div id="p1-producer2-upgrade2" class="hidden">
           <div class="subgroup" onclick="ec.buyUpgrade(1, 2, 2)">
-            <p id="p1-producer2-upgrade2-button" class="no-margin less-height upgrade-button">${UPGRADES.period1.producer2.upgrade2.name}</p>
-            <p class="no-margin amount stat-group">${UPGRADES.period1.producer2.upgrade2.desc}</p>
+            <p id="p1-producer2-upgrade2-button" class="no-margin less-height upgrade-button">${
+              UPGRADES.period1.producer2.upgrade2.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              UPGRADES.period1.producer2.upgrade2.desc
+            }</p>
           </div>
-          <p id="p1-producer2-upgrade2-cost" class="no margin no-height amount right grey small">Costs ${f(UPGRADES.period1.producer2.upgrade2.cost)} matter</p>
+          <p id="p1-producer2-upgrade2-cost" class="no margin no-height amount right grey small">Costs ${f(
+            UPGRADES.period1.producer2.upgrade2.cost
+          )} matter</p>
         </div>
 
         <div id="p1-producer2-upgrade3" class="hidden">
           <div class="subgroup" onclick="ec.buyUpgrade(1, 2, 3)">
-            <p id="p1-producer2-upgrade3-button" class="no-margin less-height upgrade-button">${UPGRADES.period1.producer2.upgrade3.name}</p>
-            <p class="no-margin amount stat-group">${UPGRADES.period1.producer2.upgrade3.desc}</p>
+            <p id="p1-producer2-upgrade3-button" class="no-margin less-height upgrade-button">${
+              UPGRADES.period1.producer2.upgrade3.name
+            }</p>
+            <p class="no-margin amount stat-group">${
+              UPGRADES.period1.producer2.upgrade3.desc
+            }</p>
           </div>
-          <p id="p1-producer2-upgrade3-cost" class="no margin no-height amount right grey small">Costs ${f(UPGRADES.period1.producer2.upgrade3.cost)} matter</p>
+          <p id="p1-producer2-upgrade3-cost" class="no margin no-height amount right grey small">Costs ${f(
+            UPGRADES.period1.producer2.upgrade3.cost
+          )} matter</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-`
+`;

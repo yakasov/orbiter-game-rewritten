@@ -45,10 +45,39 @@ class Economy {
     }
   }
 
+  buyElement(elm, up) {
+    const u = ELEMENTS[elm][`upgrade${up}`];
+    if (ELEMENTS[elm].amount.gte(u.cost)) {
+      ELEMENTS[elm].amount = ELEMENTS[elm].amount.sub(u.cost);
+      u.bought = true;
+
+      const button = document.getElementById(
+        `p${currentTab}-${elm}-upgrade${up}-button`
+      );
+      button.classList.remove("upgrade-button");
+      button.classList.add("bought-button");
+
+      const cost = document.getElementById(
+        `p${currentTab}-${elm}-upgrade${up}-cost`
+      );
+      cost.innerText = "Bought!";
+    }
+  }
+
   updateBalance() {
     this.matterBalance = this.matterBalance.add(
       this.matterProducing.div(ECONOMYDIVISOR)
     );
+  }
+
+  updateElementBalances() {
+    Object.keys(ELEMENTS).forEach((e) => {
+      if (ELEMENTS[e].enabled) {
+        ELEMENTS[e].amount = ELEMENTS[e].amount.add(
+          ELEMENTS[e].producing.div(ECONOMYDIVISOR)
+        );
+      }
+    });
   }
 
   getProducing() {
@@ -59,5 +88,6 @@ class Economy {
   updateLoop() {
     this.getProducing();
     this.updateBalance();
+    this.updateElementBalances();
   }
 }
