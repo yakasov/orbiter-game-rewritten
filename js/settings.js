@@ -8,9 +8,7 @@ function saveGame(showMessage = false) {
   Object.keys(PRODUCERS).forEach((period) => {
     producersToSave[period] = {};
     Object.keys(PRODUCERS[period]).forEach((producer) => {
-      producersToSave[period][producer] = {
-        amount: PRODUCERS[period][producer].amount,
-      };
+      producersToSave[period][producer] = PRODUCERS[period][producer].amount;
     });
   });
 
@@ -20,9 +18,8 @@ function saveGame(showMessage = false) {
     Object.keys(UPGRADES[period]).forEach((producer) => {
       upgradesToSave[period][producer] = {};
       Object.keys(UPGRADES[period][producer]).forEach((upgrade) => {
-        upgradesToSave[period][producer][upgrade] = {
-          bought: UPGRADES[period][producer][upgrade].bought,
-        };
+        upgradesToSave[period][producer][upgrade] =
+          UPGRADES[period][producer][upgrade].bought;
       });
     });
   });
@@ -35,8 +32,8 @@ function saveGame(showMessage = false) {
       upgrade1: ELEMENTS[element].upgrade1.bought ?? false,
       upgrade2: ELEMENTS[element].upgrade2.bought ?? false,
       upgrade3: ELEMENTS[element].upgrade3.bought ?? false,
-    }
-  })
+    };
+  });
 
   const generalToSave = {
     matterBalance: ec.matterBalance,
@@ -152,7 +149,7 @@ function loadSave(data = null) {
     Object.keys(PRODUCERS).forEach((period) => {
       Object.keys(PRODUCERS[period]).forEach((producer) => {
         PRODUCERS[period][producer].amount = new Decimal(
-          data.producers[period][producer].amount
+          data.producers[period][producer]
         );
 
         PRODUCERS[period][producer].cost = ec.getCost(
@@ -169,9 +166,9 @@ function loadSave(data = null) {
         Object.keys(UPGRADES[period][producer]).forEach((upgrade) => {
           if (!data.upgrades[period][producer]) return;
           UPGRADES[period][producer][upgrade].bought =
-            data.upgrades[period][producer][upgrade].bought;
+            data.upgrades[period][producer][upgrade];
 
-          if (data.upgrades[period][producer][upgrade].bought) {
+          if (UPGRADES[period][producer][upgrade].bought) {
             const pe = period.substr(-1);
             const pr = producer.substr(-1);
             const up = upgrade.substr(-1);
@@ -201,8 +198,7 @@ function loadSave(data = null) {
       // If elements don't strictly have 3 upgrades
       // then this needs to be changed
       [1, 2, 3].forEach((i) => {
-        ELEMENTS[e][`upgrade${i}`].bought =
-          data.elements[e][`upgrade${i}`];
+        ELEMENTS[e][`upgrade${i}`].bought = data.elements[e][`upgrade${i}`];
 
         if (ELEMENTS[e][`upgrade${i}`].bought) {
           const button = document.getElementById(
