@@ -37,16 +37,16 @@ function saveGame(showMessage = false) {
   Object.keys(ELEMENTS)
     .forEach((element) => {
       elementsToSave[element] = {
-        amount: ELEMENTS[element].amount,
-        enabled: ELEMENTS[element].enabled,
-        upgrade1: ELEMENTS[element].upgrade1.bought ?? false,
-        upgrade2: ELEMENTS[element].upgrade2.bought ?? false,
-        upgrade3: ELEMENTS[element].upgrade3.bought ?? false
+        "amount": ELEMENTS[element].amount,
+        "enabled": ELEMENTS[element].enabled,
+        "upgrade1": ELEMENTS[element].upgrade1.bought ?? false,
+        "upgrade2": ELEMENTS[element].upgrade2.bought ?? false,
+        "upgrade3": ELEMENTS[element].upgrade3.bought ?? false
       };
     });
 
   const generalToSave = {
-    matterBalance: ec.matterBalance
+    "matterBalance": ec.matterBalance
   };
 
   localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
@@ -76,11 +76,11 @@ function getSaveFromStorage() {
   const loadedGeneral = JSON.parse(localStorage.getItem("general"));
 
   return {
-    achievements: loadedAchievements,
-    elements: loadedElements,
-    general: loadedGeneral,
-    producers: loadedProducers,
-    upgrades: loadedUpgrades
+    "achievements": loadedAchievements,
+    "elements": loadedElements,
+    "general": loadedGeneral,
+    "producers": loadedProducers,
+    "upgrades": loadedUpgrades
   };
 }
 
@@ -126,11 +126,11 @@ function exportSave() {
   saveGame();
 
   const fullLoad = JSON.stringify({
-    achievements: JSON.parse(localStorage.getItem("achievements")),
-    elements: JSON.parse(localStorage.getItem("elements")),
-    general: JSON.parse(localStorage.getItem("general")),
-    producers: JSON.parse(localStorage.getItem("producers")),
-    upgrades: JSON.parse(localStorage.getItem("upgrades"))
+    "achievements": JSON.parse(localStorage.getItem("achievements")),
+    "elements": JSON.parse(localStorage.getItem("elements")),
+    "general": JSON.parse(localStorage.getItem("general")),
+    "producers": JSON.parse(localStorage.getItem("producers")),
+    "upgrades": JSON.parse(localStorage.getItem("upgrades"))
   });
   const encodedFullLoad = btoa(fullLoad);
 

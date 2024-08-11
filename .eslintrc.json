@@ -78,7 +78,6 @@
       }
     ],
     "quotes": ["warn", "double"],
-    "quote-props": "off",
     "semi": ["warn", "always"],
     "space-before-function-paren": [
       "error",
