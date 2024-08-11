@@ -1,3 +1,7 @@
+/* eslint-disable sort-keys */
+
+"use strict";
+
 const UPGRADES = {
   period1: {
     producer1: {
@@ -35,12 +39,15 @@ const UPGRADES = {
       }
     }
   }
-}
+};
 
-Object.keys(UPGRADES).forEach((period) => {
-  Object.keys(UPGRADES[period]).forEach((producer) => {
-    Object.keys(UPGRADES[period][producer]).forEach((producerUpgrade) => {
-      UPGRADES[period][producer][producerUpgrade].bought = false;
-    })
-  })
-})
+Object.keys(UPGRADES)
+  .forEach((period) => {
+    Object.keys(UPGRADES[period])
+      .forEach((producer) => {
+        Object.keys(UPGRADES[period][producer])
+          .forEach((producerUpgrade) => {
+            UPGRADES[period][producer][producerUpgrade].bought = false;
+          });
+      });
+  });

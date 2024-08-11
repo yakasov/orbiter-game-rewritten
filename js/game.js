@@ -1,3 +1,5 @@
+"use strict";
+
 const ac = new Achievements();
 const ds = new Display();
 const ec = new Economy();

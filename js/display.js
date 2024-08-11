@@ -1,3 +1,5 @@
+"use strict";
+
 class Display {
   updateProducerDisplay(pe, pr) {
     document.getElementById(`p${pe}-${pr.name}-buy`).innerText = `Buy 1 ${
@@ -24,13 +26,14 @@ class Display {
 
   showAchievements() {
     // Actually just change their border and colouring
-    Object.keys(ACHIEVEMENTS).forEach((a) => {
-      const box = document.getElementById(`ach${a}`);
-      if (ACHIEVEMENTS[a].achieved && box.classList.contains("unachieved")) {
-        box.classList.remove("unachieved", "dashed");
-        box.classList.add("solid");
-      }
-    });
+    Object.keys(ACHIEVEMENTS)
+      .forEach((a) => {
+        const box = document.getElementById(`ach${a}`);
+        if (ACHIEVEMENTS[a].achieved && box.classList.contains("unachieved")) {
+          box.classList.remove("unachieved", "dashed");
+          box.classList.add("solid");
+        }
+      });
   }
 
   showProducer() {
@@ -42,7 +45,8 @@ class Display {
       Object.values(PRODUCERS[`period${currentTab}`]).length - 1;
     for (const [i, v] of Object.values(
       PRODUCERS[`period${currentTab}`]
-    ).entries()) {
+    )
+      .entries()) {
       if (i < producerLength && v.amount.gte(1)) {
         const div = document.getElementById(`p${currentTab}-producer${i + 2}`);
 
@@ -59,22 +63,52 @@ class Display {
       return;
     }
 
-    Object.keys(UPGRADES[`period${currentTab}`]).forEach((k) => {
-      if (PRODUCERS[`period${currentTab}`][k].amount.gte(1)) {
-        const upgrade1Div = document.getElementById(
-          `p${currentTab}-${k}-upgrade1`
-        );
-        const box = document.getElementById(`p${currentTab}-${k}-upgrade-box`);
+    Object.keys(UPGRADES[`period${currentTab}`])
+      .forEach((k) => {
+        if (PRODUCERS[`period${currentTab}`][k].amount.gte(1)) {
+          const upgrade1Div = document.getElementById(
+            `p${currentTab}-${k}-upgrade1`
+          );
+          const box = document.getElementById(`p${
+            currentTab
+          }-${k}-upgrade-box`);
 
-        if (upgrade1Div.classList.contains("hidden")) {
-          upgrade1Div.classList.remove("hidden");
-          upgrade1Div.classList.add("fade-in");
-          box.classList.add("upgrade-background", "fade-in");
-        } else {
+          if (upgrade1Div.classList.contains("hidden")) {
+            upgrade1Div.classList.remove("hidden");
+            upgrade1Div.classList.add("fade-in");
+            box.classList.add("upgrade-background", "fade-in");
+          } else {
+            [2, 3].forEach((i) => {
+              if (UPGRADES[`period${
+                currentTab
+              }`][k][`upgrade${i - 1}`].bought) {
+                const div = document.getElementById(
+                  `p${currentTab}-${k}-upgrade${i}`
+                );
+
+                if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+                  div.classList.add("fade-in");
+                }
+              }
+            });
+          }
+        }
+      });
+  }
+
+  showElement() {
+    if (EXCLUDEDTABS.includes(currentTab)) {
+      return;
+    }
+
+    Object.keys(ELEMENTS)
+      .forEach((e) => {
+        if (ELEMENTS[e].tab === currentTab && ELEMENTS[e].upgrade1.bought) {
           [2, 3].forEach((i) => {
-            if (UPGRADES[`period${currentTab}`][k][`upgrade${i - 1}`].bought) {
+            if (ELEMENTS[e][`upgrade${i - 1}`].bought) {
               const div = document.getElementById(
-                `p${currentTab}-${k}-upgrade${i}`
+                `p${currentTab}-${e}-upgrade${i}`
               );
 
               if (div.classList.contains("hidden")) {
@@ -84,31 +118,7 @@ class Display {
             }
           });
         }
-      }
-    });
-  }
-
-  showElement() {
-    if (EXCLUDEDTABS.includes(currentTab)) {
-      return;
-    }
-
-    Object.keys(ELEMENTS).forEach((e) => {
-      if (ELEMENTS[e].tab === currentTab && ELEMENTS[e].upgrade1.bought) {
-        [2, 3].forEach((i) => {
-          if (ELEMENTS[e][`upgrade${i - 1}`].bought) {
-            const div = document.getElementById(
-              `p${currentTab}-${e}-upgrade${i}`
-            );
-
-            if (div.classList.contains("hidden")) {
-              div.classList.remove("hidden");
-              div.classList.add("fade-in");
-            }
-          }
-        });
-      }
-    });
+      });
   }
 
   displayBalance() {
@@ -126,15 +136,16 @@ class Display {
       return;
     }
 
-    Object.keys(PRODUCERS[`period${currentTab}`]).forEach((pk) => {
-      const p = PRODUCERS[`period${currentTab}`][pk];
+    Object.keys(PRODUCERS[`period${currentTab}`])
+      .forEach((pk) => {
+        const p = PRODUCERS[`period${currentTab}`][pk];
 
-      // Support for changing costs after upgrading
-      p.cost = ec.getCost(p);
+        // Support for changing costs after upgrading
+        p.cost = ec.getCost(p);
 
-      const el = document.getElementById(`p${currentTab}-${pk}-buy`);
-      el.innerText = `Buy 1 ${p.name} for ${f(p.cost)}`;
-    });
+        const el = document.getElementById(`p${currentTab}-${pk}-buy`);
+        el.innerText = `Buy 1 ${p.name} for ${f(p.cost)}`;
+      });
   }
 
   updateLoop() {

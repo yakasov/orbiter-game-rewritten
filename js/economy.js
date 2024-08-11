@@ -1,3 +1,5 @@
+"use strict";
+
 class Economy {
   constructor() {
     this.matterBalance = new Decimal(10);
@@ -71,13 +73,14 @@ class Economy {
   }
 
   updateElementBalances() {
-    Object.keys(ELEMENTS).forEach((e) => {
-      if (ELEMENTS[e].enabled) {
-        ELEMENTS[e].amount = ELEMENTS[e].amount.add(
-          ELEMENTS[e].producing.div(ECONOMYDIVISOR)
-        );
-      }
-    });
+    Object.keys(ELEMENTS)
+      .forEach((e) => {
+        if (ELEMENTS[e].enabled) {
+          ELEMENTS[e].amount = ELEMENTS[e].amount.add(
+            ELEMENTS[e].producing.div(ECONOMYDIVISOR)
+          );
+        }
+      });
   }
 
   getProducing() {

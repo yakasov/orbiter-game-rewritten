@@ -1,0 +1,92 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["eslint:all"],
+  "ignorePatterns": ["js/break_eternity.js", "html/*"],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "array-element-newline": ["error", { "ArrayPattern": { "minItems": 4 } }],
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
+    "class-methods-use-this": "off",
+    "complexity": "off",
+    "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
+    "curly": "off",
+    "dot-location": ["error", "property"],
+    "func-names": "off",
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "function-call-argument-newline": ["warn", "consistent"],
+    "function-paren-newline": ["error", "multiline-arguments"],
+    "id-length": "off",
+    "implicit-arrow-linebreak": "off",
+    "indent": ["warn", 2],
+    "linebreak-style": "off",
+    "max-lines": "off",
+    "max-lines-per-function": ["warn", 200],
+    "max-statements": "off",
+    "newline-per-chained-call": ["warn", { "ignoreChainWithDepth": 1 }],
+    "nonblock-statement-body-position": "off",
+    "no-alert": "off",
+    "no-await-in-loop": "off",
+    "no-console": "off",
+    "no-extra-parens": "off",
+    "no-inline-comments": "off",
+    "no-magic-numbers": "off",
+    "no-mixed-operators": [
+      "error",
+      {
+        "groups": [
+          ["&", "|", "^", "~", "<<", ">>", ">>>"],
+          ["&&", "||"]
+        ]
+      }
+    ],
+    "no-param-reassign": "warn",
+    "no-plusplus": "off",
+    "no-ternary": "off",
+    "no-undef": "off",
+    "no-undefined": "off",
+    "no-unused-vars": "warn",
+    "no-use-before-define": ["error", { "functions": false }],
+    "object-curly-spacing": ["error", "always"],
+    "one-var": ["warn", "never"],
+    "padded-blocks": "off",
+    "prefer-destructuring": [
+      "error",
+      {
+        "VariableDeclarator": {
+          "array": false,
+          "object": true
+        },
+        "AssignmentExpression": {
+          "array": true,
+          "object": false
+        }
+      },
+      {
+        "enforceForRenamedProperties": false
+      }
+    ],
+    "quotes": ["warn", "double"],
+    "quote-props": "off",
+    "semi": ["warn", "always"],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ]
+  }
+}

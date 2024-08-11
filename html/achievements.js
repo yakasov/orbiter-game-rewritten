@@ -1,3 +1,5 @@
+"use strict";
+
 const ACHIEVEMENTSTAB = `
 <h2 class="center">Achievements</h2>
 <div style="display: flex">

@@ -1,3 +1,7 @@
+/* eslint-disable sort-keys */
+
+"use strict";
+
 const ACHIEVEMENTS = {
   1: {
     desc: "Own your first producer",
@@ -19,12 +23,11 @@ const ACHIEVEMENTS = {
   3: {
     desc: "Own your first producer",
     name: "The First One's Nearly Free",
-    unlock: () => {
-      return false;
-    }
+    unlock: () => false
   }
-}
+};
 
-Object.keys(ACHIEVEMENTS).forEach((a) => {
-  ACHIEVEMENTS[a].achieved = false;
-})
+Object.keys(ACHIEVEMENTS)
+  .forEach((a) => {
+    ACHIEVEMENTS[a].achieved = false;
+  });

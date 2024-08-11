@@ -1,3 +1,5 @@
+"use strict";
+
 const PERIOD1TAB = `
 <div class="content">
   <div class="content-group left">
