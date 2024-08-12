@@ -59,6 +59,11 @@ class Economy {
       button.classList.remove("upgrade-button");
       button.classList.add("bought-button");
 
+      if (u.perm) {
+        button.classList.remove("pulse");
+        button.classList.add("permanent");
+      }
+
       const cost = document.getElementById(
         `p${currentTab}-${elm}-upgrade${up}-cost`
       );

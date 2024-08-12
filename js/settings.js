@@ -195,6 +195,11 @@ function loadSave(data = null) {
                   button.classList.remove("upgrade-button");
                   button.classList.add("bought-button");
 
+                  if (UPGRADES[period][producer][upgrade].perm) {
+                    button.classList.remove("pulse");
+                    button.classList.add("permanent");
+                  }
+
                   const cost = document.getElementById(
                     `p${pe}-producer${pr}-upgrade${up}-cost`
                   );
@@ -225,6 +230,11 @@ function loadSave(data = null) {
             );
             button.classList.remove("upgrade-button");
             button.classList.add("bought-button");
+
+            if (ELEMENTS[e][`upgrade${i}`].perm) {
+              button.classList.remove("pulse");
+              button.classList.add("permanent");
+            }
 
             const cost = document.getElementById(
               `p${ELEMENTS[e].tab}-${e}-upgrade${i}-cost`

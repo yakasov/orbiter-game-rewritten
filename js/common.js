@@ -9,7 +9,8 @@ const UPDATELOOPINTERVAL = 20;
 const ECONOMYDIVISOR = 1000 / UPDATELOOPINTERVAL;
 const SAVEGAMEINTERVAL = 10000;
 const EXCLUDEDTABS = [0, 9, 10];
-const currentTab = 1;
+/* eslint-disable-next-line prefer-const */
+let currentTab = 1;
 
 function f(n, decimals = 2) {
   if (typeof n === "string" || !n) return n;

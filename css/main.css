@@ -275,3 +275,8 @@ hr {
 .small {
   font-size: 16px;
 }
+
+.permanent {
+  text-shadow: 0px 1px 8px #0b0;
+  color: #0e0;
+}

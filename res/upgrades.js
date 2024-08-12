@@ -48,6 +48,8 @@ Object.keys(UPGRADES)
         Object.keys(UPGRADES[period][producer])
           .forEach((producerUpgrade) => {
             UPGRADES[period][producer][producerUpgrade].bought = false;
+            UPGRADES[period][producer][producerUpgrade].perm = 
+              UPGRADES[period][producer][producerUpgrade].perm ?? false;
           });
       });
   });

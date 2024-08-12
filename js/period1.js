@@ -6,38 +6,84 @@ class Period1 {
   }
 
   processUpgrades() {
-    // Hydrogen Gatherers
+
+    /*
+     * Hydrogen Gatherers
+     * Production multipliers
+     */
     let tmp = PRODUCERS.period1.producer1.producesBase;
     let ups = UPGRADES.period1.producer1;
-    const elm = ELEMENTS[PRODUCERS.period1.producer1.element];
+    let elm = ELEMENTS[PRODUCERS.period1.producer1.element];
     if (ups.upgrade1.bought) tmp = tmp.mul(1.5);
     if (ups.upgrade2.bought) tmp = tmp.mul(1.5);
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer1.produces = tmp;
 
-    tmp = elm.producing;
+    // Element enabling
     if (ups.upgrade3.bought && !elm.enabled) {
       elm.enabled = true;
     }
+
+    // Element production multipliers
+    tmp = elm.producing;
     if (elm.upgrade1.bought) tmp = tmp.mul(2);
     elm.producing = tmp;
 
-    // Helium Hunters
+    // Element boosting Gatherer scaling
+    tmp = PRODUCERS.period1.producer1.scalingBase;
+    const tmp2 = new Decimal(1.05); // Minimum scaling
+    const tmp3 = tmp.sub(tmp2); // ~0.19
+    if (elm.upgrade2.bought) tmp =
+      tmp2.add(tmp3.div(Math.log10(elm.amount) + 1));
+    PRODUCERS.period1.producer1.scaling = tmp;
+
+    /*
+     * Helium Hunters
+     * Production multipliers
+     */
     tmp = PRODUCERS.period1.producer2.producesBase;
     ups = UPGRADES.period1.producer2;
-    if (ups.upgrade1.bought)
-      PRODUCERS.period1.producer2.scaling = new Decimal(1.17);
+    elm = ELEMENTS[PRODUCERS.period1.producer2.element];
     if (ups.upgrade2.bought)
       tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.5));
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer2.produces = tmp;
+
+    // Hunter price scaling
+    tmp = PRODUCERS.period1.producer2.scalingBase;
+    if (ups.upgrade1.bought)
+      tmp = tmp.sub(0.18);
+    PRODUCERS.period1.producer2.scaling = tmp;
+
+    // Element enabling
+    if (ups.upgrade3.bought && !elm.enabled) {
+      elm.enabled = true;
+    }
+
+    // Element production multipliers
+    tmp = elm.producing;
+    if (elm.upgrade1.bought) tmp = tmp.mul(2);
+    elm.producing = tmp;
   }
 
   displayElements() {
-    const box = document.getElementById("p1-hydrogen-element-box");
+    /*
+     * I'm sure this can be done better
+     * but for just Period 1, it works fine I reckon
+    */
+    let box = document.getElementById("p1-hydrogen-element-box");
     if (
       box.classList.contains("hidden") &&
       UPGRADES.period1.producer1.upgrade3.bought
+    ) {
+      box.classList.remove("hidden");
+      box.classList.add("fade-in");
+    }
+
+    box = document.getElementById("p1-helium-element-box");
+    if (
+      box.classList.contains("hidden") &&
+      UPGRADES.period1.producer2.upgrade3.bought
     ) {
       box.classList.remove("hidden");
       box.classList.add("fade-in");
