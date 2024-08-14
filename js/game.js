@@ -3,6 +3,7 @@
 const ac = new Achievements();
 const ds = new Display();
 const ec = new Economy();
+const EL = new Elements();
 const p1 = new Period1();
 
 function mainLoop() {
@@ -13,6 +14,7 @@ function mainLoop() {
 }
 
 function loadTabs() {
+  document.getElementById("p0-tab").innerHTML = PERIOD0TAB;
   document.getElementById("p1-tab").innerHTML = PERIOD1TAB;
   document.getElementById("p9-tab").innerHTML = ACHIEVEMENTSTAB;
 }

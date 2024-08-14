@@ -15,7 +15,7 @@ const PRODUCERS = {
       "base": new Decimal(150),
       "display": "hunter",
       "element": "helium",
-      "producesBase": new Decimal(7.5),
+      "producesBase": new Decimal(15),
       "scalingBase": new Decimal(1.35)
     }
   }
@@ -30,7 +30,7 @@ Object.keys(PRODUCERS)
         PRODUCERS[period][producer].name = producer;
         PRODUCERS[period][producer].produces =
           PRODUCERS[period][producer].producesBase;
-        PRODUCERS[period][producer].scaling = 
+        PRODUCERS[period][producer].scaling =
           PRODUCERS[period][producer].scalingBase;
       });
   });

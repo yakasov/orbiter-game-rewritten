@@ -280,3 +280,46 @@ hr {
   text-shadow: 0px 1px 8px #0b0;
   color: #0e0;
 }
+
+.element-table-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+.element-table-container {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 90%;
+  gap: 10px;
+}
+
+.element-table-item {
+  border: 1px solid #fff;
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+}
+
+.element-table-item:hover {
+  background-color: #45a049;
+}
+
+.element-table-item:active {
+  background-color: #3e8e41;
+}
+
+.hidden-table-item {
+  border: none;
+  background-color: #000;
+  color: #000;
+  pointer-events: none;
+}

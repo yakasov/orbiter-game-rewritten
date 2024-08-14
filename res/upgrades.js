@@ -33,7 +33,7 @@ const UPGRADES = {
         "name": "Monday Morning Coffee Group"
       },
       "upgrade3": {
-        "cost": new Decimal(500_000),
+        "cost": new Decimal(200_000),
         "desc": "Start collecting leftover Helium",
         "name": "Helium Catcher"
       }
@@ -48,8 +48,7 @@ Object.keys(UPGRADES)
         Object.keys(UPGRADES[period][producer])
           .forEach((producerUpgrade) => {
             UPGRADES[period][producer][producerUpgrade].bought = false;
-            UPGRADES[period][producer][producerUpgrade].perm = 
-              UPGRADES[period][producer][producerUpgrade].perm ?? false;
+            UPGRADES[period][producer][producerUpgrade].perm ??= false;
           });
       });
   });

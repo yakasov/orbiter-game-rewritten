@@ -17,7 +17,7 @@ const ELEMENTS = {
       "name": "Spare Parts Exchange"
     },
     "upgrade3": {
-      "cost": new Decimal(2_000),
+      "cost": new Decimal(500),
       "desc": "Unlock the first half of something - permanently",
       "name": "Hydrogen Key",
       "perm": true
@@ -49,6 +49,6 @@ Object.keys(ELEMENTS)
   .forEach((e) => {
     ELEMENTS[e].amount = new Decimal(0);
     ELEMENTS[e].enabled = false;
-    ELEMENTS[e].perm = ELEMENTS[e].perm ?? false;
+    ELEMENTS[e].perm ??= false;
     ELEMENTS[e].producing = new Decimal(0);
   });

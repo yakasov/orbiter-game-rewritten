@@ -70,7 +70,7 @@ class Period1 {
     /*
      * I'm sure this can be done better
      * but for just Period 1, it works fine I reckon
-    */
+     */
     let box = document.getElementById("p1-hydrogen-element-box");
     if (
       box.classList.contains("hidden") &&

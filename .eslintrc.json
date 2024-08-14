@@ -31,6 +31,7 @@
     "implicit-arrow-linebreak": "off",
     "indent": ["warn", 2],
     "linebreak-style": "off",
+    "lines-around-comment": "off",
     "line-comment-position": "off",
     "max-lines": "off",
     "max-lines-per-function": ["warn", 200],
