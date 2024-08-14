@@ -90,7 +90,7 @@ class Economy {
 
   getProducing() {
     this.matterProducing = new Decimal(0);
-    this.matterProducing = this.matterProducing.add(p1.producing);
+    this.matterProducing = this.matterProducing.add(P1.producing);
   }
 
   updateLoop() {

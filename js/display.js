@@ -123,12 +123,12 @@ class Display {
 
   displayBalance() {
     const el = document.getElementById("mainBalance");
-    el.innerText = `You have ${f(ec.matterBalance)} matter.`;
+    el.innerText = `You have ${f(EC.matterBalance)} matter.`;
   }
 
   displayProducing() {
     const el = document.getElementById("producingBalance");
-    el.innerText = `producing ${f(ec.matterProducing)} matter /s`;
+    el.innerText = `producing ${f(EC.matterProducing)} matter /s`;
   }
 
   displayProducer() {
@@ -141,7 +141,7 @@ class Display {
         const p = PRODUCERS[`period${currentTab}`][pk];
 
         // Support for changing costs after upgrading
-        p.cost = ec.getCost(p);
+        p.cost = EC.getCost(p);
 
         const el = document.getElementById(`p${currentTab}-${pk}-buy`);
         el.innerText = `Buy 1 ${p.name} for ${f(p.cost)}`;

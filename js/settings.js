@@ -46,7 +46,7 @@ function saveGame(showMessage = false) {
     });
 
   const generalToSave = {
-    "matterBalance": ec.matterBalance
+    "matterBalance": EC.matterBalance
   };
 
   localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
@@ -165,7 +165,7 @@ function loadSave(data = null) {
               data.producers[period][producer]
             );
 
-            PRODUCERS[period][producer].cost = ec.getCost(
+            PRODUCERS[period][producer].cost = EC.getCost(
               PRODUCERS[period][producer]
             );
           });
@@ -246,6 +246,6 @@ function loadSave(data = null) {
   }
 
   if (data.general) {
-    ec.matterBalance = new Decimal(data.general.matterBalance);
+    EC.matterBalance = new Decimal(data.general.matterBalance);
   }
 }

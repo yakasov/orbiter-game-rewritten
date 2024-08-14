@@ -108,7 +108,7 @@ class Period1 {
 
     Object.values(PRODUCERS.period1)
       .forEach((p) => {
-        ds.updateProducerDisplay(1, p);
+        DS.updateProducerDisplay(1, p);
       });
   }
 }

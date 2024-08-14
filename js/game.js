@@ -1,16 +1,17 @@
 "use strict";
 
-const ac = new Achievements();
-const ds = new Display();
-const ec = new Economy();
+const AC = new Achievements();
+const DS = new Display();
+const EC = new Economy();
 const EL = new Elements();
-const p1 = new Period1();
+const P1 = new Period1();
 
 function mainLoop() {
-  ac.updateLoop();
-  ds.updateLoop();
-  ec.updateLoop();
-  p1.updateLoop();
+  AC.updateLoop();
+  DS.updateLoop();
+  EC.updateLoop();
+  EL.updateLoop();
+  P1.updateLoop();
 }
 
 function loadTabs() {

@@ -7,8 +7,8 @@ const PERIOD1TAB = `
       <div class="subgroup">
         <p class="no-margin">Hydrogen Gatherers</p>
         <div>
-          <button id="p1-producer1-buy" onclick="ec.buyProducer(1, 1)"></button>
-          <button id="p1-producer1-buyMax" onclick="ec.buyMax(1, 1)">Buy max</button>
+          <button id="p1-producer1-buy" onclick="EC.buyProducer(1, 1)"></button>
+          <button id="p1-producer1-buyMax" onclick="EC.buyMax(1, 1)">Buy max</button>
         </div>
       </div>
       <div class="stat-group">
@@ -22,7 +22,7 @@ const PERIOD1TAB = `
 
       <div id="p1-producer1-upgrade-box">
         <div id="p1-producer1-upgrade1" class="hidden">
-          <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 1)">
+          <div class="subgroup" onclick="EC.buyUpgrade(1, 1, 1)">
             <p id="p1-producer1-upgrade1-button" class="no-margin less-height upgrade-button">${
               UPGRADES.period1.producer1.upgrade1.name
             }</p>
@@ -36,7 +36,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-producer1-upgrade2" class="hidden">
-          <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 2)">
+          <div class="subgroup" onclick="EC.buyUpgrade(1, 1, 2)">
             <p id="p1-producer1-upgrade2-button" class="no-margin less-height upgrade-button">${
               UPGRADES.period1.producer1.upgrade2.name
             }</p>
@@ -50,7 +50,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-producer1-upgrade3" class="hidden">
-          <div class="subgroup" onclick="ec.buyUpgrade(1, 1, 3)">
+          <div class="subgroup" onclick="EC.buyUpgrade(1, 1, 3)">
             <p id="p1-producer1-upgrade3-button" class="no-margin less-height upgrade-button">${
               UPGRADES.period1.producer1.upgrade3.name
             }</p>
@@ -68,7 +68,7 @@ const PERIOD1TAB = `
         <br><br>
         <h4 class="center">You are now saving Hydrogen.</h4>
         <div id="p1-hydrogen-upgrade1">
-          <div class="subgroup" onclick="ec.buyElement('hydrogen', 1)">
+          <div class="subgroup" onclick="EC.buyElement('hydrogen', 1)">
             <p id="p1-hydrogen-upgrade1-button" class="no-margin less-height upgrade-button">${
               ELEMENTS.hydrogen.upgrade1.name
             }</p>
@@ -82,7 +82,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-hydrogen-upgrade2" class="hidden">
-          <div class="subgroup" onclick="ec.buyElement('hydrogen', 2)">
+          <div class="subgroup" onclick="EC.buyElement('hydrogen', 2)">
             <p id="p1-hydrogen-upgrade2-button" class="no-margin less-height upgrade-button">${
               ELEMENTS.hydrogen.upgrade2.name
             }</p>
@@ -96,7 +96,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-hydrogen-upgrade3" class="hidden">
-          <div class="subgroup" onclick="ec.buyElement('hydrogen', 3)">
+          <div class="subgroup" onclick="EC.buyElement('hydrogen', 3)">
             <p id="p1-hydrogen-upgrade3-button" class="no-margin less-height upgrade-button pulse">${
               ELEMENTS.hydrogen.upgrade3.name
             }</p>
@@ -117,8 +117,8 @@ const PERIOD1TAB = `
       <div class="subgroup">
         <p class="no-margin">Helium Hunters</p>
         <div>
-          <button id="p1-producer2-buy" onclick="ec.buyProducer(1, 2)"></button>
-          <button id="p1-producer2-buyMax" onclick="ec.buyMax(1, 2)">Buy max</button>
+          <button id="p1-producer2-buy" onclick="EC.buyProducer(1, 2)"></button>
+          <button id="p1-producer2-buyMax" onclick="EC.buyMax(1, 2)">Buy max</button>
         </div>
       </div>
       <div class="stat-group">
@@ -132,7 +132,7 @@ const PERIOD1TAB = `
 
       <div id="p1-producer2-upgrade-box">
         <div id="p1-producer2-upgrade1" class="hidden">
-          <div class="subgroup" onclick="ec.buyUpgrade(1, 2, 1)">
+          <div class="subgroup" onclick="EC.buyUpgrade(1, 2, 1)">
             <p id="p1-producer2-upgrade1-button" class="no-margin less-height upgrade-button">${
               UPGRADES.period1.producer2.upgrade1.name
             }</p>
@@ -146,7 +146,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-producer2-upgrade2" class="hidden">
-          <div class="subgroup" onclick="ec.buyUpgrade(1, 2, 2)">
+          <div class="subgroup" onclick="EC.buyUpgrade(1, 2, 2)">
             <p id="p1-producer2-upgrade2-button" class="no-margin less-height upgrade-button">${
               UPGRADES.period1.producer2.upgrade2.name
             }</p>
@@ -160,7 +160,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-producer2-upgrade3" class="hidden">
-          <div class="subgroup" onclick="ec.buyUpgrade(1, 2, 3)">
+          <div class="subgroup" onclick="EC.buyUpgrade(1, 2, 3)">
             <p id="p1-producer2-upgrade3-button" class="no-margin less-height upgrade-button">${
               UPGRADES.period1.producer2.upgrade3.name
             }</p>
@@ -178,7 +178,7 @@ const PERIOD1TAB = `
         <br><br>
         <h4 class="center">You are now saving Helium.</h4>
         <div id="p1-helium-upgrade1">
-          <div class="subgroup" onclick="ec.buyElement('helium', 1)">
+          <div class="subgroup" onclick="EC.buyElement('helium', 1)">
             <p id="p1-helium-upgrade1-button" class="no-margin less-height upgrade-button">${
               ELEMENTS.helium.upgrade1.name
             }</p>
@@ -192,7 +192,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-helium-upgrade2" class="hidden">
-          <div class="subgroup" onclick="ec.buyElement('helium', 2)">
+          <div class="subgroup" onclick="EC.buyElement('helium', 2)">
             <p id="p1-helium-upgrade2-button" class="no-margin less-height upgrade-button">${
               ELEMENTS.helium.upgrade2.name
             }</p>
@@ -206,7 +206,7 @@ const PERIOD1TAB = `
         </div>
 
         <div id="p1-helium-upgrade3" class="hidden">
-          <div class="subgroup" onclick="ec.buyElement('helium', 3)">
+          <div class="subgroup" onclick="EC.buyElement('helium', 3)">
             <p id="p1-helium-upgrade3-button" class="no-margin less-height upgrade-button pulse">${
               ELEMENTS.helium.upgrade3.name
             }</p>
