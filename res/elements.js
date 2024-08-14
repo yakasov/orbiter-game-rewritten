@@ -37,7 +37,7 @@ const ELEMENTS = {
       "name": "///"
     },
     "upgrade3": {
-      "cost": new Decimal(2_000),
+      "cost": new Decimal(750),
       "desc": "Unlock the second half of something - permanently",
       "name": "Helium Key",
       "perm": true
