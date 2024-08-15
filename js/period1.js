@@ -6,14 +6,13 @@ class Period1 {
   }
 
   processUpgrades() {
-
     /*
      * Hydrogen Gatherers
      * Production multipliers
      */
     let tmp = PRODUCERS.period1.producer1.producesBase;
     let ups = UPGRADES.period1.producer1;
-    let elm = ELEMENTS[PRODUCERS.period1.producer1.element];
+    let elm = ELEMENTS.hydrogen;
     if (ups.upgrade1.bought) tmp = tmp.mul(1.5);
     if (ups.upgrade2.bought) tmp = tmp.mul(1.5);
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
@@ -33,8 +32,8 @@ class Period1 {
     tmp = PRODUCERS.period1.producer1.scalingBase;
     const tmp2 = new Decimal(1.05); // Minimum scaling
     const tmp3 = tmp.sub(tmp2); // ~0.19
-    if (elm.upgrade2.bought) tmp =
-      tmp2.add(tmp3.div(Math.log10(elm.amount) + 1));
+    if (elm.upgrade2.bought)
+      tmp = tmp2.add(tmp3.div(Math.log10(elm.amount) + 1));
     PRODUCERS.period1.producer1.scaling = tmp;
 
     /*
@@ -43,7 +42,7 @@ class Period1 {
      */
     tmp = PRODUCERS.period1.producer2.producesBase;
     ups = UPGRADES.period1.producer2;
-    elm = ELEMENTS[PRODUCERS.period1.producer2.element];
+    elm = ELEMENTS.helium;
     if (ups.upgrade2.bought)
       tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.5));
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
@@ -51,8 +50,7 @@ class Period1 {
 
     // Hunter price scaling
     tmp = PRODUCERS.period1.producer2.scalingBase;
-    if (ups.upgrade1.bought)
-      tmp = tmp.sub(0.18);
+    if (ups.upgrade1.bought) tmp = tmp.sub(0.18);
     PRODUCERS.period1.producer2.scaling = tmp;
 
     // Element enabling
@@ -105,6 +103,16 @@ class Period1 {
     this.updateAmounts();
     this.processUpgrades();
     this.displayElements();
+
+    const el = document.getElementById("p0-button");
+    if (
+      ELEMENTS.hydrogen.upgrade3.bought &&
+      ELEMENTS.helium.upgrade3.bought &&
+      el.classList.contains("hidden")
+    ) {
+      elementsTabUnlocked = true;
+      el.classList.remove("hidden");
+    }
 
     Object.values(PRODUCERS.period1)
       .forEach((p) => {

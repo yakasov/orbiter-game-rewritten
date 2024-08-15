@@ -46,6 +46,7 @@ function saveGame(showMessage = false) {
     });
 
   const generalToSave = {
+    elementsTabUnlocked,
     "matterBalance": EC.matterBalance
   };
 
@@ -246,6 +247,7 @@ function loadSave(data = null) {
   }
 
   if (data.general) {
+    elementsTabUnlocked = data.general.elementsTabUnlocked;
     EC.matterBalance = new Decimal(data.general.matterBalance);
   }
 }
