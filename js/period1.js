@@ -16,7 +16,7 @@ class Period1 {
     let per = PERIODIC.hydrogen;
     if (ups.upgrade1.bought) tmp = tmp.mul(1.5);
     if (ups.upgrade2.bought) tmp = tmp.mul(1.5);
-    if (per.active) tmp = tmp.mul(2);
+    tmp = tmp.mul(per.mult); // Periodic H2 multiplier
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer1.produces = tmp;
 
