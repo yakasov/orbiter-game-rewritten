@@ -94,7 +94,8 @@ class Period1 {
       .forEach((p) => {
         this.producing = this.producing.add(p.amount.mul(p.produces));
         if (p.element && ELEMENTS[p.element].enabled) {
-          ELEMENTS[p.element].producing = p.amount.div(50);
+          ELEMENTS[p.element].producing = p.amount.div(80)
+            .mul(p.produces.div(p.producesBase));
         }
       });
   }
