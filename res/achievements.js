@@ -21,9 +21,9 @@ const ACHIEVEMENTS = {
     }
   },
   "3": {
-    "desc": "Own your first producer",
-    "name": "The First One's Nearly Free",
-    "unlock": () => false
+    "desc": "Unlock the Periodic Table",
+    "name": "Real Science",
+    "unlock": () => elementsTabUnlocked
   }
 };
 

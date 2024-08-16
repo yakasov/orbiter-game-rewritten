@@ -13,8 +13,10 @@ class Period1 {
     let tmp = PRODUCERS.period1.producer1.producesBase;
     let ups = UPGRADES.period1.producer1;
     let elm = ELEMENTS.hydrogen;
+    let per = PERIODIC.hydrogen;
     if (ups.upgrade1.bought) tmp = tmp.mul(1.5);
     if (ups.upgrade2.bought) tmp = tmp.mul(1.5);
+    if (per.active) tmp = tmp.mul(2);
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer1.produces = tmp;
 
@@ -43,6 +45,7 @@ class Period1 {
     tmp = PRODUCERS.period1.producer2.producesBase;
     ups = UPGRADES.period1.producer2;
     elm = ELEMENTS.helium;
+    per = PERIODIC.helium;
     if (ups.upgrade2.bought)
       tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.5));
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
@@ -61,6 +64,7 @@ class Period1 {
     // Element production multipliers
     tmp = elm.producing;
     if (elm.upgrade1.bought) tmp = tmp.mul(2);
+    if (elm.upgrade2.bought) tmp = tmp.pow(1.1);
     elm.producing = tmp;
   }
 

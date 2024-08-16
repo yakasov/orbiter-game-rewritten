@@ -19,7 +19,7 @@ const ACHIEVEMENTSTAB = `
   <div class="group center" id="achievements_col3">
     <div id="ach3" class="unachieved dashed achievement">
       <p class="bold">${ACHIEVEMENTS[3].name}</p>
-      <p class="amount hidden">${ACHIEVEMENTS[2].desc}</p>
+      <p class="amount hidden">${ACHIEVEMENTS[3].desc}</p>
     </div>
   </div>
 </div>

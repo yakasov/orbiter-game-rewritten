@@ -3,7 +3,7 @@
 class Elements {
   elementClicked(element) {
     const el = document.getElementById("element-info");
-    el.innerText = element;
+    el.innerHTML = PERIODIC[element].html;
   }
 
   updateLoop() {

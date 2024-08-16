@@ -3,6 +3,7 @@
 const AC = new Achievements();
 const DS = new Display();
 const EC = new Economy();
+const PR = new Prestige();
 const EL = new Elements();
 const P1 = new Period1();
 
@@ -30,6 +31,10 @@ function showTab(n) {
 
   document.getElementById(`p${n}-tab`).classList.remove("hidden");
 }
+
+const ELEMENTS_COPY = structuredClone(ELEMENTS);
+const PRODUCERS_COPY = structuredClone(PRODUCERS);
+const UPGRADES_COPY = structuredClone(UPGRADES);
 
 loadTabs();
 loadSave();

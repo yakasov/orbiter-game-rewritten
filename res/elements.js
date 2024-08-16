@@ -33,11 +33,11 @@ const ELEMENTS = {
     },
     "upgrade2": {
       "cost": new Decimal(125),
-      "desc": "???",
-      "name": "///"
+      "desc": "Raise Helium saved to ^1.1",
+      "name": "Anti-Pyramid Scheme"
     },
     "upgrade3": {
-      "cost": new Decimal(750),
+      "cost": new Decimal(1500),
       "desc": "Unlock the second half of something - permanently",
       "name": "Helium Key",
       "perm": true

@@ -186,8 +186,8 @@ const PERIOD0TAB = `
 </div>
 
 <div class="content subgroup center">
-  <div class="content-group">
-    <p id="element-info"></p>
+  <div id="element-info" class="content-group">
+    
   </div>
 </div>
 `
