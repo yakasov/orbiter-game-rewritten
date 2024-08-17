@@ -27,8 +27,13 @@ class Prestige {
   }
   
   resetBalance() {
-    EC.matterBalance = new Decimal(10);
     EC.matterProducing = new Decimal(0);
+    EC.matterBalance = new Decimal(10);
+
+    setTimeout(() => {
+      EC.matterProducing = new Decimal(0);
+      EC.matterBalance = new Decimal(10);
+    }, UPDATELOOPINTERVAL + 1);
   }
 
   resetPeriod1() {
@@ -50,6 +55,7 @@ class Prestige {
           });
       });
 
+    document.getElementById("p1-tab").innerHTML = PERIOD1TAB;
     this.resetBalance();
   }
 }
