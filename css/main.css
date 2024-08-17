@@ -156,7 +156,8 @@ button {
   text-shadow: 0px 1px 8px #ccc;
 }
 
-.hidden {
+.hidden,
+.perma-hidden {
   visibility: hidden;
   display: none;
 }

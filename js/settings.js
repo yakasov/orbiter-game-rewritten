@@ -48,7 +48,7 @@ function saveGame(showMessage = false) {
   Object.keys(PERIODIC)
     .forEach((element) => {
       periodicToSave[element] = { 
-        mult: PERIODIC[element].mult 
+        reset: PERIODIC[element].reset 
       };
     });
 
@@ -261,7 +261,7 @@ function loadSave(data = null) {
   if (data.periodic) {
     Object.keys(PERIODIC)
       .forEach((e) => {
-        PERIODIC[e].mult = data.periodic[e].mult;
+        PERIODIC[e].reset = data.periodic[e].reset;
       });
   }
 

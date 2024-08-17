@@ -4,7 +4,7 @@ class Prestige {
   baseElement(obj) {
     return {
       amount: new Decimal(0),
-      enabled: true,
+      enabled: false,
       producing: new Decimal(0),
       upgrade1: {
         bought: obj.upgrade1.perm ?? false,
@@ -58,11 +58,13 @@ class Prestige {
           });
       });
 
+    if (PERIODIC.hydrogen.resets >= 2) ELEMENTS.hydrogen.enabled = true;
+
     document.getElementById("p1-tab").innerHTML = PERIOD1TAB;
     document.getElementById("p1-hydrogen-upgrade3")
-      .remove();
+      .classList.add("perma-hidden");
     document.getElementById("p1-helium-upgrade3")
-      .remove();
+      .classList.add("perma-hidden");
 
     this.resetBalance();
   }
