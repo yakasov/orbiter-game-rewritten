@@ -7,16 +7,18 @@ const PERIODIC = {
     "costFormula": () => new Decimal(500_000)
       .mul(PERIODIC.hydrogen.mult * 2),
     get "html"() { return `
-<p>Condense all your Hydrogen and form H<sup>2</sup>, providing a 2x bonus to all Hydrogen related production.<br>
-You will only get this bonus if your matter is greater than ${f(
+<p>Condense all your Hydrogen and form H<sub>2</sub>, providing a 2x bonus to all Hydrogen related production.<br>
+<b>You will only get this bonus if your matter is greater than ${f(
     PERIODIC.hydrogen.costFormula()
-  )}.</p>
+  )}.</b></p>
 <button class="scary" onclick="if (EC.matterBalance.gte(PERIODIC.hydrogen.costFormula())) PERIODIC.hydrogen.mult *= 2; PR.resetPeriod1();">Reset Period 1</button>
 `; },
     "mult": 1,
   },
   "helium": {
+    "costFormula": () => 0,
     "html": "",
+    "mult": 1
   },
 };
 

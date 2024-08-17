@@ -13,8 +13,7 @@ function saveGame(showMessage = false) {
       producersToSave[period] = {};
       Object.keys(PRODUCERS[period])
         .forEach((producer) => {
-          producersToSave[period][producer] =
-            PRODUCERS[period][producer].amount;
+          producersToSave[period][producer] = PRODUCERS[period][producer].amount;
         });
     });
 
@@ -37,23 +36,32 @@ function saveGame(showMessage = false) {
   Object.keys(ELEMENTS)
     .forEach((element) => {
       elementsToSave[element] = {
-        "amount": ELEMENTS[element].amount,
-        "enabled": ELEMENTS[element].enabled,
-        "upgrade1": ELEMENTS[element].upgrade1.bought ?? false,
-        "upgrade2": ELEMENTS[element].upgrade2.bought ?? false,
-        "upgrade3": ELEMENTS[element].upgrade3.bought ?? false
+        amount: ELEMENTS[element].amount,
+        enabled: ELEMENTS[element].enabled,
+        upgrade1: ELEMENTS[element].upgrade1.bought ?? false,
+        upgrade2: ELEMENTS[element].upgrade2.bought ?? false,
+        upgrade3: ELEMENTS[element].upgrade3.bought ?? false,
+      };
+    });
+
+  const periodicToSave = {};
+  Object.keys(PERIODIC)
+    .forEach((element) => {
+      periodicToSave[element] = { 
+        mult: PERIODIC[element].mult 
       };
     });
 
   const generalToSave = {
     elementsTabUnlocked,
-    "matterBalance": EC.matterBalance
+    matterBalance: EC.matterBalance,
   };
 
   localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
   localStorage.setItem("producers", JSON.stringify(producersToSave));
   localStorage.setItem("upgrades", JSON.stringify(upgradesToSave));
   localStorage.setItem("elements", JSON.stringify(elementsToSave));
+  localStorage.setItem("periodic", JSON.stringify(periodicToSave));
   localStorage.setItem("general", JSON.stringify(generalToSave));
 
   const saveTime = document.getElementById("saveTime");
@@ -70,18 +78,20 @@ function saveGame(showMessage = false) {
 }
 
 function getSaveFromStorage() {
-  const loadedAchievements = JSON.parse(localStorage.getItem("achievements"));
-  const loadedProducers = JSON.parse(localStorage.getItem("producers"));
-  const loadedUpgrades = JSON.parse(localStorage.getItem("upgrades"));
-  const loadedElements = JSON.parse(localStorage.getItem("elements"));
-  const loadedGeneral = JSON.parse(localStorage.getItem("general"));
+  const achievements = JSON.parse(localStorage.getItem("achievements"));
+  const producers = JSON.parse(localStorage.getItem("producers"));
+  const upgrades = JSON.parse(localStorage.getItem("upgrades"));
+  const elements = JSON.parse(localStorage.getItem("elements"));
+  const periodic = JSON.parse(localStorage.getItem("periodic"));
+  const general = JSON.parse(localStorage.getItem("general"));
 
   return {
-    "achievements": loadedAchievements,
-    "elements": loadedElements,
-    "general": loadedGeneral,
-    "producers": loadedProducers,
-    "upgrades": loadedUpgrades
+    achievements,
+    elements,
+    general,
+    periodic,
+    producers,
+    upgrades,
   };
 }
 
@@ -109,6 +119,7 @@ function importSave(encodedData = null) {
       decodedData.producers &&
       decodedData.upgrades &&
       decodedData.elements &&
+      decodedData.periodic &&
       decodedData.general
     ) {
       loadSave(decodedData);
@@ -127,11 +138,12 @@ function exportSave() {
   saveGame();
 
   const fullLoad = JSON.stringify({
-    "achievements": JSON.parse(localStorage.getItem("achievements")),
-    "elements": JSON.parse(localStorage.getItem("elements")),
-    "general": JSON.parse(localStorage.getItem("general")),
-    "producers": JSON.parse(localStorage.getItem("producers")),
-    "upgrades": JSON.parse(localStorage.getItem("upgrades"))
+    achievements: JSON.parse(localStorage.getItem("achievements")),
+    elements: JSON.parse(localStorage.getItem("elements")),
+    general: JSON.parse(localStorage.getItem("general")),
+    periodic: JSON.parse(localStorage.getItem("periodic")),
+    producers: JSON.parse(localStorage.getItem("producers")),
+    upgrades: JSON.parse(localStorage.getItem("upgrades")),
   });
   const encodedFullLoad = btoa(fullLoad);
 
@@ -243,6 +255,13 @@ function loadSave(data = null) {
             cost.innerText = "Bought!";
           }
         });
+      });
+  }
+
+  if (data.periodic) {
+    Object.keys(PERIODIC)
+      .forEach((e) => {
+        PERIODIC[e].mult = data.periodic[e].mult;
       });
   }
 

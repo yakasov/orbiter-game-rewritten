@@ -7,14 +7,14 @@ class Prestige {
       enabled: true,
       producing: new Decimal(0),
       upgrade1: {
-        bought: obj.upgrade1.perm ?? false
+        bought: obj.upgrade1.perm ?? false,
       },
       upgrade2: {
-        bought: obj.upgrade2.perm ?? false
+        bought: obj.upgrade2.perm ?? false,
       },
       upgrade3: {
-        bought: obj.upgrade3.perm ?? false
-      }
+        bought: obj.upgrade3.perm ?? false,
+      },
     };
   }
 
@@ -22,10 +22,10 @@ class Prestige {
     return {
       amount: new Decimal(0),
       produces: obj.producesBase,
-      scaling: obj.scalingBase
+      scaling: obj.scalingBase,
     };
   }
-  
+
   resetBalance() {
     EC.matterProducing = new Decimal(0);
     EC.matterBalance = new Decimal(10);
@@ -42,9 +42,12 @@ class Prestige {
 
     Object.keys(PRODUCERS.period1)
       .forEach((k) => {
-        Object.assign(PRODUCERS.period1[k], this.baseProducer(PRODUCERS.period1[k]));
+        Object.assign(
+          PRODUCERS.period1[k],
+          this.baseProducer(PRODUCERS.period1[k])
+        );
       });
-    
+
     Object.keys(UPGRADES.period1)
       .forEach((p) => {
         Object.keys(UPGRADES.period1[p])
@@ -56,6 +59,11 @@ class Prestige {
       });
 
     document.getElementById("p1-tab").innerHTML = PERIOD1TAB;
+    document.getElementById("p1-hydrogen-upgrade3")
+      .remove();
+    document.getElementById("p1-helium-upgrade3")
+      .remove();
+
     this.resetBalance();
   }
 }
