@@ -5,7 +5,7 @@
 const PERIODIC = {
   "hydrogen": {
     "active": true,
-    "costFormula": () => new Decimal(250_000)
+    "costFormula": () => new Decimal(200_000)
       .mul(2 ** (PERIODIC.hydrogen.resets + 1)),
     get "htmlLeft"() {
       return `
@@ -34,9 +34,16 @@ const PERIODIC = {
   },
   "helium": {
     "active": true,
-    "costFormula": () => 0,
+    "costFormula": () => new Decimal(320_000)
+      .mul(2 ** (PERIODIC.helium.resets + 1)),
     get "htmlLeft"() {
-      return "";
+      return `
+<p>Bond your Helium atoms to Hydrogen atoms and form He<sup>+</sup>, burning through Period 1 costs and reducing producer scaling by ${((PERIODIC.helium.resets + 1) * 100) / (PERIODIC.helium.resets + 4)}%.<br>
+<b>You will only get this bonus if your matter is greater than ${f(
+    PERIODIC.helium.costFormula()
+  )}.</b></p>
+<button class="scary" onclick="if (EC.matterBalance.gte(PERIODIC.helium.costFormula())) PERIODIC.helium.resets += 1; PR.resetPeriod1();">Reset Period 1</button>
+`;
     },
     get "htmlRight"() {
       return "";

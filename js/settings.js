@@ -269,4 +269,12 @@ function loadSave(data = null) {
     elementsTabUnlocked = data.general.elementsTabUnlocked;
     EC.matterBalance = new Decimal(data.general.matterBalance);
   }
+
+  // Some final loading stuff
+  if (elementsTabUnlocked) {
+    document.getElementById("p1-hydrogen-upgrade3")
+      .classList.add("perma-hidden");
+    document.getElementById("p1-helium-upgrade3")
+      .classList.add("perma-hidden");
+  }
 }

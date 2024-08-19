@@ -36,6 +36,16 @@ class Period1 {
     const tmp3 = tmp.sub(tmp2); // ~0.19
     if (elm.upgrade2.bought)
       tmp = tmp2.add(tmp3.div(Math.log10(elm.amount) + 1));
+    tmp = tmp2.add(
+      tmp
+        .sub(tmp2)
+        .mul(
+          new Decimal(1)
+            .sub(
+              (PERIODIC.helium.resets + 1) / (PERIODIC.helium.resets + 4)
+            )
+        )
+    );
     PRODUCERS.period1.producer1.scaling = tmp;
 
     /*
@@ -48,12 +58,23 @@ class Period1 {
     per = PERIODIC.helium;
     if (ups.upgrade2.bought)
       tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.5));
+    if (elm.upgrade2.bought) tmp = tmp.pow(1.25);
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer2.produces = tmp;
 
     // Hunter price scaling
     tmp = PRODUCERS.period1.producer2.scalingBase;
     if (ups.upgrade1.bought) tmp = tmp.sub(0.18);
+    tmp = tmp2.add(
+      tmp
+        .sub(tmp2)
+        .mul(
+          new Decimal(1)
+            .sub(
+              (PERIODIC.helium.resets + 1) / (PERIODIC.helium.resets + 4)
+            )
+        )
+    );
     PRODUCERS.period1.producer2.scaling = tmp;
 
     // Element enabling
@@ -64,7 +85,6 @@ class Period1 {
     // Element production multipliers
     tmp = elm.producing;
     if (elm.upgrade1.bought) tmp = tmp.mul(2);
-    if (elm.upgrade2.bought) tmp = tmp.pow(1.1);
     elm.producing = tmp;
   }
 
