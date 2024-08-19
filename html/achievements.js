@@ -8,6 +8,11 @@ const ACHIEVEMENTSTAB = `
       <p class="bold">${ACHIEVEMENTS[1].name}</p>
       <p class="amount hidden">${ACHIEVEMENTS[1].desc}</p>
     </div>
+
+    <div id="ach4" class="unachieved dashed achievement">
+      <p class="bold">${ACHIEVEMENTS[4].name}</p>
+      <p class="amount hidden">${ACHIEVEMENTS[4].desc}</p>
+    </div>
   </div>
   <div class="group center" id="achievements_col2">
     <div id="ach2" class="unachieved dashed achievement">

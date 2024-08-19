@@ -24,6 +24,11 @@ const ACHIEVEMENTS = {
     "desc": "Unlock the Periodic Table",
     "name": "Real Science",
     "unlock": () => elementsTabUnlocked
+  },
+  "4": {
+    "desc": "Form a molecule",
+    "name": "Gaseous Molecules",
+    "unlock": () => PERIODIC.hydrogen.resets > 0
   }
 };
 
