@@ -13,6 +13,7 @@ const ECONOMYDIVISOR = 1000 / UPDATELOOPINTERVAL;
 const SAVEGAMEINTERVAL = 10000;
 const EXCLUDEDTABS = [0, 9, 10];
 let currentTab = 1;
+let currentElement = "";
 let elementsTabUnlocked = false;
 
 function f(n, decimals = 2) {

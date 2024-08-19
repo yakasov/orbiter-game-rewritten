@@ -3,26 +3,26 @@
 class Prestige {
   baseElement(obj) {
     return {
-      amount: new Decimal(0),
-      enabled: false,
-      producing: new Decimal(0),
-      upgrade1: {
-        bought: obj.upgrade1.perm ?? false,
+      "amount": new Decimal(0),
+      "enabled": false,
+      "producing": new Decimal(0),
+      "upgrade1": {
+        "bought": obj.upgrade1.perm ?? false
       },
-      upgrade2: {
-        bought: obj.upgrade2.perm ?? false,
+      "upgrade2": {
+        "bought": obj.upgrade2.perm ?? false
       },
-      upgrade3: {
-        bought: obj.upgrade3.perm ?? false,
-      },
+      "upgrade3": {
+        "bought": obj.upgrade3.perm ?? false
+      }
     };
   }
 
   baseProducer(obj) {
     return {
-      amount: new Decimal(0),
-      produces: obj.producesBase,
-      scaling: obj.scalingBase,
+      "amount": new Decimal(0),
+      "produces": obj.producesBase,
+      "scaling": obj.scalingBase
     };
   }
 
@@ -58,13 +58,13 @@ class Prestige {
           });
       });
 
-    if (PERIODIC.hydrogen.resets >= 2) ELEMENTS.hydrogen.enabled = true;
-
     document.getElementById("p1-tab").innerHTML = PERIOD1TAB;
     document.getElementById("p1-hydrogen-upgrade3")
       .classList.add("perma-hidden");
     document.getElementById("p1-helium-upgrade3")
       .classList.add("perma-hidden");
+
+    EL.elementClicked(currentElement);
 
     this.resetBalance();
   }

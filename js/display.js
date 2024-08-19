@@ -65,13 +65,14 @@ class Display {
 
     Object.keys(UPGRADES[`period${currentTab}`])
       .forEach((k) => {
-        if (PRODUCERS[`period${currentTab}`][k].amount.gte(1)) {
+        if (
+          PRODUCERS[`period${currentTab}`][k].amount.gte(1) ||
+          UPGRADES[`period${currentTab}`][k].upgrade1.bought
+        ) {
           const upgrade1Div = document.getElementById(
             `p${currentTab}-${k}-upgrade1`
           );
-          const box = document.getElementById(`p${
-            currentTab
-          }-${k}-upgrade-box`);
+          const box = document.getElementById(`p${currentTab}-${k}-upgrade-box`);
 
           if (upgrade1Div.classList.contains("hidden")) {
             upgrade1Div.classList.remove("hidden");
@@ -79,9 +80,7 @@ class Display {
             box.classList.add("upgrade-background", "fade-in");
           } else {
             [2, 3].forEach((i) => {
-              if (UPGRADES[`period${
-                currentTab
-              }`][k][`upgrade${i - 1}`].bought) {
+              if (UPGRADES[`period${currentTab}`][k][`upgrade${i - 1}`].bought) {
                 const div = document.getElementById(
                   `p${currentTab}-${k}-upgrade${i}`
                 );

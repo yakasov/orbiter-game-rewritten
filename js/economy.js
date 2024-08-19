@@ -28,10 +28,10 @@ class Economy {
     return p.base.mul(p.scaling.pow(p.amount));
   }
 
-  buyUpgrade(pe, pr, up) {
+  buyUpgrade(pe, pr, up, force = false) {
     const u = UPGRADES[`period${pe}`][`producer${pr}`][`upgrade${up}`];
-    if (this.matterBalance.gte(u.cost)) {
-      this.matterBalance = this.matterBalance.sub(u.cost);
+    if (this.matterBalance.gte(u.cost) || force) {
+      if (!force) this.matterBalance = this.matterBalance.sub(u.cost);
       u.bought = true;
 
       const button = document.getElementById(
@@ -47,14 +47,15 @@ class Economy {
     }
   }
 
-  buyElement(elm, up) {
+  buyElement(elm, up, force = false) {
+    const tab = currentTab;
     const u = ELEMENTS[elm][`upgrade${up}`];
-    if (ELEMENTS[elm].amount.gte(u.cost)) {
-      ELEMENTS[elm].amount = ELEMENTS[elm].amount.sub(u.cost);
+    if (ELEMENTS[elm].amount.gte(u.cost) || force) {
+      if (!force) ELEMENTS[elm].amount = ELEMENTS[elm].amount.sub(u.cost);
       u.bought = true;
 
       const button = document.getElementById(
-        `p${currentTab}-${elm}-upgrade${up}-button`
+        `p${tab}-${elm}-upgrade${up}-button`
       );
       button.classList.remove("upgrade-button");
       button.classList.add("bought-button");
@@ -65,7 +66,7 @@ class Economy {
       }
 
       const cost = document.getElementById(
-        `p${currentTab}-${elm}-upgrade${up}-cost`
+        `p${tab}-${elm}-upgrade${up}-cost`
       );
       cost.innerText = "Bought!";
     }

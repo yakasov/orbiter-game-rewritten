@@ -36,25 +36,25 @@ function saveGame(showMessage = false) {
   Object.keys(ELEMENTS)
     .forEach((element) => {
       elementsToSave[element] = {
-        amount: ELEMENTS[element].amount,
-        enabled: ELEMENTS[element].enabled,
-        upgrade1: ELEMENTS[element].upgrade1.bought ?? false,
-        upgrade2: ELEMENTS[element].upgrade2.bought ?? false,
-        upgrade3: ELEMENTS[element].upgrade3.bought ?? false,
+        "amount": ELEMENTS[element].amount,
+        "enabled": ELEMENTS[element].enabled,
+        "upgrade1": ELEMENTS[element].upgrade1.bought ?? false,
+        "upgrade2": ELEMENTS[element].upgrade2.bought ?? false,
+        "upgrade3": ELEMENTS[element].upgrade3.bought ?? false
       };
     });
 
   const periodicToSave = {};
   Object.keys(PERIODIC)
     .forEach((element) => {
-      periodicToSave[element] = { 
-        reset: PERIODIC[element].reset 
+      periodicToSave[element] = {
+        "resets": PERIODIC[element].resets
       };
     });
 
   const generalToSave = {
     elementsTabUnlocked,
-    matterBalance: EC.matterBalance,
+    "matterBalance": EC.matterBalance
   };
 
   localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
@@ -91,7 +91,7 @@ function getSaveFromStorage() {
     general,
     periodic,
     producers,
-    upgrades,
+    upgrades
   };
 }
 
@@ -138,12 +138,12 @@ function exportSave() {
   saveGame();
 
   const fullLoad = JSON.stringify({
-    achievements: JSON.parse(localStorage.getItem("achievements")),
-    elements: JSON.parse(localStorage.getItem("elements")),
-    general: JSON.parse(localStorage.getItem("general")),
-    periodic: JSON.parse(localStorage.getItem("periodic")),
-    producers: JSON.parse(localStorage.getItem("producers")),
-    upgrades: JSON.parse(localStorage.getItem("upgrades")),
+    "achievements": JSON.parse(localStorage.getItem("achievements")),
+    "elements": JSON.parse(localStorage.getItem("elements")),
+    "general": JSON.parse(localStorage.getItem("general")),
+    "periodic": JSON.parse(localStorage.getItem("periodic")),
+    "producers": JSON.parse(localStorage.getItem("producers")),
+    "upgrades": JSON.parse(localStorage.getItem("upgrades"))
   });
   const encodedFullLoad = btoa(fullLoad);
 
@@ -261,7 +261,7 @@ function loadSave(data = null) {
   if (data.periodic) {
     Object.keys(PERIODIC)
       .forEach((e) => {
-        PERIODIC[e].reset = data.periodic[e].reset;
+        PERIODIC[e].resets = data.periodic[e].resets;
       });
   }
 

@@ -156,10 +156,14 @@ button {
   text-shadow: 0px 1px 8px #ccc;
 }
 
-.hidden,
-.perma-hidden {
+.hidden {
   visibility: hidden;
   display: none;
+}
+
+.perma-hidden {
+  visibility: hidden !important;
+  display: none !important;
 }
 
 .disabled {

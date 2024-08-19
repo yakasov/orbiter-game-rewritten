@@ -2,6 +2,8 @@
 
 class Elements {
   elementClicked(element) {
+    currentElement = element;
+
     const el = document.getElementById("element-info");
     el.innerHTML = `
     <div class="content-group">
@@ -14,32 +16,20 @@ class Elements {
   }
 
   checkMilestones() {
-    if (PERIODIC.hydrogen.reset >= 3) {
-      Object.assign(UPGRADES.period1.producer1, {
-        "upgrade1": {
-          "bought": true,
-          "perm": true
-        },
-        "upgrade2": {
-          "bought": true,
-          "perm": true
-        },
-        "upgrade3": {
-          "bought": true,
-          "perm": true
-        },
-      });
+    if (PERIODIC.hydrogen.resets >= 2) {
+      ELEMENTS.hydrogen.enabled = true;
+      EC.buyUpgrade(1, 1, 3, true);
+    }
 
-      Object.assign(ELEMENTS.hydrogen, {
-        "upgrade1": {
-          "bought": true,
-          "perm": true
-        },
-        "upgrade2": {
-          "bought": true,
-          "perm": true
-        }
-      });
+    if (PERIODIC.hydrogen.resets >= 3) {
+      EC.buyUpgrade(1, 1, 1, true);
+      EC.buyUpgrade(1, 1, 2, true);
+
+      const t = currentTab;
+      currentTab = 1;
+      EC.buyElement("hydrogen", 1, true);
+      EC.buyElement("hydrogen", 2, true);
+      currentTab = t;
     }
   }
 

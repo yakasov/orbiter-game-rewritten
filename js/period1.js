@@ -16,7 +16,7 @@ class Period1 {
     let per = PERIODIC.hydrogen;
     if (ups.upgrade1.bought) tmp = tmp.mul(1.5);
     if (ups.upgrade2.bought) tmp = tmp.mul(1.5);
-    tmp = tmp.mul(2 ** per.reset); // Periodic H2 multiplier
+    tmp = tmp.mul(2 ** per.resets); // Periodic H2 multiplier
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer1.produces = tmp;
 
@@ -98,7 +98,8 @@ class Period1 {
       .forEach((p) => {
         this.producing = this.producing.add(p.amount.mul(p.produces));
         if (p.element && ELEMENTS[p.element].enabled) {
-          ELEMENTS[p.element].producing = p.amount.div(80)
+          ELEMENTS[p.element].producing = p.amount
+            .div(80)
             .mul(p.produces.div(p.producesBase));
         }
       });
@@ -111,8 +112,8 @@ class Period1 {
 
     const el = document.getElementById("p0-button");
     if (
-      ELEMENTS.hydrogen.upgrade3.bought &&
-      ELEMENTS.helium.upgrade3.bought &&
+      ((ELEMENTS.hydrogen.upgrade3.bought && ELEMENTS.helium.upgrade3.bought) ||
+        elementsTabUnlocked) &&
       el.classList.contains("hidden")
     ) {
       elementsTabUnlocked = true;
