@@ -36,7 +36,12 @@ class Prestige {
     }, UPDATELOOPINTERVAL + 1);
   }
 
-  resetPeriod1() {
+  resetElements() {
+    PERIODIC.hydrogen.resets = 0;
+    PERIODIC.helium.resets = 0;
+  }
+
+  resetPeriod1(full = false) {
     Object.assign(ELEMENTS.hydrogen, this.baseElement(ELEMENTS.hydrogen));
     Object.assign(ELEMENTS.helium, this.baseElement(ELEMENTS.helium));
 
@@ -52,7 +57,7 @@ class Prestige {
       .forEach((p) => {
         Object.keys(UPGRADES.period1[p])
           .forEach((u) => {
-            if (!UPGRADES.period1[p][u].perm) {
+            if (!UPGRADES.period1[p][u].perm || full) {
               UPGRADES.period1[p][u].bought = false;
             }
           });

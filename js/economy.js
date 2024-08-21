@@ -4,6 +4,9 @@ class Economy {
   constructor() {
     this.matterBalance = new Decimal(10);
     this.matterProducing = new Decimal(0);
+
+    this.solidBalance = new Decimal(0);
+    this.solidProducing = new Decimal(0);
   }
 
   buyProducer(pe, pr) {

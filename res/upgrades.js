@@ -38,7 +38,8 @@ const UPGRADES = {
         "name": "Helium Catcher"
       }
     }
-  }
+  },
+  "period2": {}
 };
 
 Object.keys(UPGRADES)

@@ -14,7 +14,9 @@ const SAVEGAMEINTERVAL = 10000;
 const EXCLUDEDTABS = [0, 9, 10];
 let currentTab = 1;
 let currentElement = "";
+
 let elementsTabUnlocked = false;
+let period2Unlocked = false;
 
 function f(n, decimals = 2) {
   if (typeof n === "string" || !n) return n;

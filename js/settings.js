@@ -54,7 +54,9 @@ function saveGame(showMessage = false) {
 
   const generalToSave = {
     elementsTabUnlocked,
-    "matterBalance": EC.matterBalance
+    "matterBalance": EC.matterBalance,
+    period2Unlocked,
+    "solidBalance": EC.solidBalance
   };
 
   localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
@@ -268,6 +270,7 @@ function loadSave(data = null) {
   if (data.general) {
     elementsTabUnlocked = data.general.elementsTabUnlocked;
     EC.matterBalance = new Decimal(data.general.matterBalance);
+    EC.solidBalance = new Decimal(data.general.solidBalance);
   }
 
   // Some final loading stuff

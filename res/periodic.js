@@ -5,7 +5,7 @@
 const PERIODIC = {
   "hydrogen": {
     "active": true,
-    "costFormula": () => new Decimal(200_000)
+    "costFormula": () => new Decimal(100_000)
       .mul(2 ** (PERIODIC.hydrogen.resets + 1)),
     get "htmlLeft"() {
       return `
@@ -34,7 +34,7 @@ const PERIODIC = {
   },
   "helium": {
     "active": true,
-    "costFormula": () => new Decimal(320_000)
+    "costFormula": () => new Decimal(200_000)
       .mul(2 ** (PERIODIC.helium.resets + 1)),
     get "htmlLeft"() {
       return `
@@ -46,7 +46,17 @@ const PERIODIC = {
 `;
     },
     get "htmlRight"() {
-      return "";
+      return `
+<h3>Milestones</h3>
+<span class="less-height">
+  <p class="${PERIODIC.helium.resets >= 2
+    ? ""
+    : "unachieved"}">2 Resets: Permanently produce Helium</p>
+  <p class="${PERIODIC.helium.resets >= 3
+    ? ""
+    : "unachieved"}">3 Resets: Keep all Helium-related upgrades</p>
+</span>
+`;
     },
     "resets": 0,
     "unlocked": true

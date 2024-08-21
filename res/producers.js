@@ -18,7 +18,8 @@ const PRODUCERS = {
       "producesBase": new Decimal(15),
       "scalingBase": new Decimal(1.35)
     }
-  }
+  },
+  "period2": {}
 };
 
 Object.keys(PRODUCERS)
