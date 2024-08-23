@@ -33,7 +33,7 @@ const UPGRADES = {
         "name": "Monday Morning Coffee Group"
       },
       "upgrade3": {
-        "cost": new Decimal(200_000),
+        "cost": new Decimal(100_000),
         "desc": "Start collecting leftover Helium",
         "name": "Helium Catcher"
       }

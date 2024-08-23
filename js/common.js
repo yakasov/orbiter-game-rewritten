@@ -20,7 +20,7 @@ let period2Unlocked = false;
 
 function f(n, decimals = 2) {
   if (typeof n === "string" || !n) return n;
-  if (n.lte(1e3)) return n.toFixed(decimals);
+  if (n.lt(1e3)) return n.toFixed(decimals);
 
   const ns = n.toString();
 

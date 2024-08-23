@@ -3,6 +3,7 @@
 class Period2 {
   constructor() {
     this.producing = new Decimal(0);
+    this.resets = 0;
   }
 
   get resetGain() {
@@ -19,6 +20,7 @@ class Period2 {
   getSolids() {
     if (EC.matterBalance.gte(2_000_000)) {
       EC.solidBalance = EC.solidBalance.add(this.resetGain);
+      this.resets++;
     }
 
     PR.resetPeriod1(true);

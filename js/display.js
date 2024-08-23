@@ -121,13 +121,29 @@ class Display {
   }
 
   displayBalance() {
-    const el = document.getElementById("mainBalance");
+    let el = document.getElementById("mainBalance");
     el.innerText = `You have ${f(EC.matterBalance)} matter.`;
+
+    if (currentTab === 2 && P2.resets > 0) {
+      el = document.getElementById("p2-solid-balance-div");
+      if (el.classList.contains("hidden")) {
+        el.classList.remove("hidden");
+        el.classList.add("fade-in");
+      }
+
+      el = document.getElementById("p2-solid-balance");
+      el.innerText = `You have ${f(EC.solidBalance)} solids.`;
+    }
   }
 
   displayProducing() {
-    const el = document.getElementById("producingBalance");
+    let el = document.getElementById("producingBalance");
     el.innerText = `producing ${f(EC.matterProducing)} matter /s`;
+
+    if (currentTab === 2 && P2.resets > 0) {
+      el = document.getElementById("p2-solid-producing");
+      el.innerText = `producing ${f(EC.solidProducing)} solids /s`;
+    }
   }
 
   displayProducer() {

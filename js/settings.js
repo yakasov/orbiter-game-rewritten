@@ -269,6 +269,7 @@ function loadSave(data = null) {
 
   if (data.general) {
     elementsTabUnlocked = data.general.elementsTabUnlocked;
+    period2Unlocked = data.general.period2Unlocked;
     EC.matterBalance = new Decimal(data.general.matterBalance);
     EC.solidBalance = new Decimal(data.general.solidBalance);
   }

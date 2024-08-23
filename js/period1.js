@@ -58,7 +58,11 @@ class Period1 {
     per = PERIODIC.helium;
     if (ups.upgrade2.bought)
       tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.5));
-    if (elm.upgrade2.bought) tmp = tmp.pow(1.25);
+    if (elm.upgrade2.bought) {
+      let power = 1 + 0.1 * Math.log10(elm.amount);
+      power = Math.min(Math.max(1, power), 1.25);
+      tmp = tmp.pow(power);
+    }
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);
     PRODUCERS.period1.producer2.produces = tmp;
 

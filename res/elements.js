@@ -33,7 +33,7 @@ const ELEMENTS = {
     },
     "upgrade2": {
       "cost": new Decimal(125),
-      "desc": "Raise Hunter production to ^1.25",
+      "desc": "Helium raises Hydrogen production",
       "name": "Anti-Pyramid Scheme"
     },
     "upgrade3": {
