@@ -28,7 +28,7 @@ class Economy {
   }
 
   getCost(p) {
-    return p.base.mul(p.scaling.pow(p.amount));
+    return Decimal.max(p.base.mul(p.scaling.pow(p.amount)), 1);
   }
 
   buyUpgrade(pe, pr, up, force = false) {
