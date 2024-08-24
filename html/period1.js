@@ -3,7 +3,7 @@
 const PERIOD1TAB = `
 <div class="content">
   <div class="content-group left">
-    <div id="p1-producer1" class="fade-in left">
+    <div id="p1-producer1" class="left">
       <div class="subgroup">
         <p class="no-margin">Hydrogen Gatherers</p>
         <div>
