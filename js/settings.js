@@ -53,10 +53,17 @@ function saveGame(showMessage = false) {
     });
 
   const generalToSave = {
-    elementsTabUnlocked,
-    "matterBalance": EC.matterBalance,
-    period2Unlocked,
-    "solidBalance": EC.solidBalance
+    "balances": {
+      "matterBalance": EC.matterBalance,
+      "solidBalance": EC.solidBalance
+    },
+    "resets": {
+      "p2Resets": P2.resets
+    },
+    "unlocks": {
+      elementsTabUnlocked,
+      period2Unlocked
+    }
   };
 
   localStorage.setItem("achievements", JSON.stringify(achievementsToSave));
@@ -268,10 +275,13 @@ function loadSave(data = null) {
   }
 
   if (data.general) {
-    elementsTabUnlocked = data.general.elementsTabUnlocked;
-    period2Unlocked = data.general.period2Unlocked;
-    EC.matterBalance = new Decimal(data.general.matterBalance);
-    EC.solidBalance = new Decimal(data.general.solidBalance);
+    elementsTabUnlocked = data.general.unlocks.elementsTabUnlocked;
+    period2Unlocked = data.general.unlocks.period2Unlocked;
+
+    EC.matterBalance = new Decimal(data.general.balances.matterBalance);
+    EC.solidBalance = new Decimal(data.general.balances.solidBalance);
+
+    P2.resets = data.general.resets.p2Resets;
   }
 
   // Some final loading stuff
