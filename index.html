@@ -12,10 +12,17 @@
     <title>Orbiter Game</title>
   </head>
 
-  <body id="body" class="fade-in">
-    <div class="top-bar" id="topBar">
-      <h2 class="center" id="mainBalance"></h2>
-      <p class="center grey producing" id="producingBalance"></p>
+  <body  class="fade-in" id="body">
+    <div class="top-bar row" id="topBar">
+      <span class="side-spacing">
+        <h2 class="center" id="mainBalance"></h2>
+        <p class="center grey producing" id="matterProducing"></p>
+      </span>
+
+      <span class="side-spacing" id="solidBalanceSpan">
+        <h2 class="center" id="solidBalance"></h2>
+        <p class="center grey producing" id="solidProducing"></p>
+      </span>
     </div>
 
     <div class="tab-bar" id="tab-bar">

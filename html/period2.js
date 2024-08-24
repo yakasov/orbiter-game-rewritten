@@ -10,11 +10,6 @@ const PERIOD2TAB = `
 <br> <br>
 
 <div>
-  <div class="center less-height hidden" id="p2-solid-balance-div">
-    <h2 class="center" id="p2-solid-balance">You have 0.00 solids.</h2>
-    <p class="center grey producing" id="p2-solid-producing">producing 0.00 solids /s</p>
-  </div>
-
   <div class="content">
     <div class="content-group left">
 

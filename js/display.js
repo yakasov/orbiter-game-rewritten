@@ -124,24 +124,24 @@ class Display {
     let el = document.getElementById("mainBalance");
     el.innerText = `You have ${f(EC.matterBalance)} matter.`;
 
-    if (currentTab === 2 && P2.resets > 0) {
-      el = document.getElementById("p2-solid-balance-div");
+    if (P2.resets > 0) {
+      el = document.getElementById("solidBalanceSpan");
       if (el.classList.contains("hidden")) {
         el.classList.remove("hidden");
         el.classList.add("fade-in");
       }
 
-      el = document.getElementById("p2-solid-balance");
+      el = document.getElementById("solidBalance");
       el.innerText = `You have ${f(EC.solidBalance)} solids.`;
     }
   }
 
   displayProducing() {
-    let el = document.getElementById("producingBalance");
+    let el = document.getElementById("matterProducing");
     el.innerText = `producing ${f(EC.matterProducing)} matter /s`;
 
-    if (currentTab === 2 && P2.resets > 0) {
-      el = document.getElementById("p2-solid-producing");
+    if (P2.resets > 0) {
+      el = document.getElementById("solidProducing");
       el.innerText = `producing ${f(EC.solidProducing)} solids /s`;
     }
   }

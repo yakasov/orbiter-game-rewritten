@@ -62,6 +62,18 @@ button {
   background: rgba(0, 0, 0, 0.85);
 }
 
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.side-spacing {
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
 .no-margin {
   margin: 0;
 }
