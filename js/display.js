@@ -103,19 +103,24 @@ class Display {
 
     Object.keys(ELEMENTS)
       .forEach((e) => {
-        if (ELEMENTS[e].tab === currentTab && ELEMENTS[e].upgrade1.bought) {
-          [2, 3].forEach((i) => {
-            if (ELEMENTS[e][`upgrade${i - 1}`].bought) {
-              const div = document.getElementById(
-                `p${currentTab}-${e}-upgrade${i}`
-              );
+        if (ELEMENTS[e].tab === currentTab && ELEMENTS[e].upgradeCount > 0 && ELEMENTS[e].upgrade1.bought) {
+          Array.from(
+            { "length": ELEMENTS[e].upgradeCount },
+            (_, i) => i + 1
+          )
+            .slice(1)
+            .forEach((i) => {
+              if (ELEMENTS[e][`upgrade${i - 1}`].bought) {
+                const div = document.getElementById(
+                  `p${currentTab}-${e}-upgrade${i}`
+                );
 
-              if (div.classList.contains("hidden")) {
-                div.classList.remove("hidden");
-                div.classList.add("fade-in");
+                if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+                  div.classList.add("fade-in");
+                }
               }
-            }
-          });
+            });
         }
       });
   }
