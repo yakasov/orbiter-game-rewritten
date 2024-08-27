@@ -38,9 +38,15 @@ function saveGame(showMessage = false) {
       elementsToSave[element] = {
         "amount": ELEMENTS[element].amount,
         "enabled": ELEMENTS[element].enabled,
-        "upgrade1": ELEMENTS[element].upgrade1.bought ?? false,
-        "upgrade2": ELEMENTS[element].upgrade2.bought ?? false,
-        "upgrade3": ELEMENTS[element].upgrade3.bought ?? false
+        "upgrade1": ELEMENTS[element].upgrade1
+          ? ELEMENTS[element].upgrade1.bought
+          : false,
+        "upgrade2": ELEMENTS[element].upgrade2
+          ? ELEMENTS[element].upgrade2.bought
+          : false,
+        "upgrade3": ELEMENTS[element].upgrade3
+          ? ELEMENTS[element].upgrade3.bought
+          : false
       };
     });
 
@@ -236,34 +242,38 @@ function loadSave(data = null) {
   if (data.elements) {
     Object.keys(ELEMENTS)
       .forEach((e) => {
-        ELEMENTS[e].amount = new Decimal(data.elements[e].amount);
-        ELEMENTS[e].enabled = data.elements[e].enabled;
+        if (data.elements[e]) {
+          ELEMENTS[e].amount = new Decimal(data.elements[e].amount);
+          ELEMENTS[e].enabled = data.elements[e].enabled;
 
-        /*
-         * If elements don't strictly have 3 upgrades
-         * then this needs to be changed
-         */
-        [1, 2, 3].forEach((i) => {
-          ELEMENTS[e][`upgrade${i}`].bought = data.elements[e][`upgrade${i}`];
+          if (ELEMENTS[e].upgradeCount > 0) {
+            Array.from(
+              { "length": ELEMENTS[e].upgradeCount },
+              (_, i) => i + 1
+            )
+              .forEach((i) => {
+                ELEMENTS[e][`upgrade${i}`].bought = data.elements[e][`upgrade${i}`];
 
-          if (ELEMENTS[e][`upgrade${i}`].bought) {
-            const button = document.getElementById(
-              `p${ELEMENTS[e].tab}-${e}-upgrade${i}-button`
-            );
-            button.classList.remove("upgrade-button");
-            button.classList.add("bought-button");
+                if (ELEMENTS[e][`upgrade${i}`].bought) {
+                  const button = document.getElementById(
+                    `p${ELEMENTS[e].tab}-${e}-upgrade${i}-button`
+                  );
+                  button.classList.remove("upgrade-button");
+                  button.classList.add("bought-button");
 
-            if (ELEMENTS[e][`upgrade${i}`].perm) {
-              button.classList.remove("pulse");
-              button.classList.add("permanent");
-            }
+                  if (ELEMENTS[e][`upgrade${i}`].perm) {
+                    button.classList.remove("pulse");
+                    button.classList.add("permanent");
+                  }
 
-            const cost = document.getElementById(
-              `p${ELEMENTS[e].tab}-${e}-upgrade${i}-cost`
-            );
-            cost.innerText = "Bought!";
+                  const cost = document.getElementById(
+                    `p${ELEMENTS[e].tab}-${e}-upgrade${i}-cost`
+                  );
+                  cost.innerText = "Bought!";
+                }
+              });
           }
-        });
+        }
       });
   }
 
@@ -286,9 +296,9 @@ function loadSave(data = null) {
 
   // Some final loading stuff
   if (elementsTabUnlocked) {
-    document.getElementById("p1-hydrogen-upgrade3")
+    document
+      .getElementById("p1-hydrogen-upgrade3")
       .classList.add("perma-hidden");
-    document.getElementById("p1-helium-upgrade3")
-      .classList.add("perma-hidden");
+    document.getElementById("p1-helium-upgrade3").classList.add("perma-hidden");
   }
 }
