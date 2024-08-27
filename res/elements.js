@@ -6,6 +6,7 @@ const ELEMENTS = {
   "hydrogen": {
     "desc": "H",
     "tab": 1,
+    "upgradeCount": 3,
     "upgrade1": {
       "cost": new Decimal(10),
       "desc": "Double the Hydrogen saved",
@@ -26,6 +27,7 @@ const ELEMENTS = {
   "helium": {
     "desc": "He",
     "tab": 1,
+    "upgradeCount": 3,
     "upgrade1": {
       "cost": new Decimal(10),
       "desc": "Double the Helium saved",
@@ -42,6 +44,46 @@ const ELEMENTS = {
       "name": "Helium Key",
       "perm": true
     }
+  },
+  "lithium": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
+  },
+  "beryllium": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
+  },
+  "boron": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
+  },
+  "carbon": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
+  },
+  "nitrogen": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
+  },
+  "oxygen": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
+  },
+  "fluorine": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
+  },
+  "neon": {
+    "desc": "L",
+    "tab": 2,
+    "upgradeCount": 0
   }
 };
 

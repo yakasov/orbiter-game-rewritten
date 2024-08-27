@@ -40,5 +40,11 @@ function f(n, decimals = 2) {
     return `${half1},${half2},${half3}`;
   }
   return `${ns[0]}.${ns[1]}${ns[2]}e${getLength(n) - 1}`;
+}
 
+function fibonacci(n) {
+  if (n <= 1) {
+    return n;
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }

@@ -103,7 +103,9 @@ class Display {
 
     Object.keys(ELEMENTS)
       .forEach((e) => {
-        if (ELEMENTS[e].tab === currentTab && ELEMENTS[e].upgradeCount > 0 && ELEMENTS[e].upgrade1.bought) {
+        if (ELEMENTS[e].tab === currentTab &&
+            ELEMENTS[e].upgradeCount > 0 &&
+            ELEMENTS[e].upgrade1.bought) {
           Array.from(
             { "length": ELEMENTS[e].upgradeCount },
             (_, i) => i + 1

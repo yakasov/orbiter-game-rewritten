@@ -113,6 +113,10 @@ button {
   flex: 50%;
 }
 
+.eighth-content-group {
+  flex: 12.5%;
+}
+
 .left {
   margin-right: 2%;
   text-align: left;
@@ -340,4 +344,39 @@ hr {
   background-color: #000;
   color: #000;
   pointer-events: none;
+}
+
+.alkali {
+  color: #00758C;
+  text-shadow: 0 0 30px #D8F8FF;
+}
+
+.alkaline {
+  color: #D6006B;
+  text-shadow: 0 0 30px #FFE7E7;
+}
+
+.metalloid {
+  color: #945700;
+  text-shadow: 0 0 30px #FEF7E0;
+}
+
+.reactive {
+  color: #0060F0;
+  text-shadow: 0 0 30px #E2EEFF;
+}
+
+.trans {
+  color: #A555EC;
+  text-shadow: 0 0 30px #F3E8FD;
+}
+
+.post {
+  color: #227754;
+  text-shadow: 0 0 30px #D6F9E8;
+}
+
+.noble {
+  color: #CD1D5E;
+  text-shadow: 0 0 30px #FFE7EB;
 }
