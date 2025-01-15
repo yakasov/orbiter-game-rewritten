@@ -32,18 +32,18 @@ class Period2 {
 
     switch (e) {
     case "lithium":
-      mult = 1 + (ELEMENTS[e].amount * 0.05);
+      mult = 1 + (ELEMENTS[e].amount * 0.2);
       if (display) return `${mult}x production!`;
       return mult;
 
     case "beryllium":
       mult = ELEMENTS[e].amount;
-      if (display) return `+${mult} to all producers!`;
+      if (display) return `+${mult * 2} to all producers!`;
       return mult;
 
     case "boron":
       mult = ELEMENTS[e].amount;
-      if (display) return `-${mult} from all producer costs!`;
+      if (display) return `-${mult * 2} from all producer costs!`;
       return mult;
 
     case "carbon":
@@ -67,7 +67,7 @@ class Period2 {
       return mult;
 
     case "neon":
-      mult = 1 + (ELEMENTS[e].amount * 0.25);
+      mult = 1 + (ELEMENTS[e].amount * 0.5);
       if (display) return `${mult}x to solids gain!`;
       return mult;
 

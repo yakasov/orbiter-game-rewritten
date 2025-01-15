@@ -54,7 +54,8 @@ function saveGame(showMessage = false) {
   Object.keys(PERIODIC)
     .forEach((element) => {
       periodicToSave[element] = {
-        "resets": PERIODIC[element].resets
+        "resets": PERIODIC[element].resets,
+        "total": PERIODIC[element].total
       };
     });
 
@@ -281,6 +282,7 @@ function loadSave(data = null) {
     Object.keys(PERIODIC)
       .forEach((e) => {
         PERIODIC[e].resets = data.periodic[e].resets;
+        PERIODIC[e].total = data.periodic[e].total;
       });
   }
 

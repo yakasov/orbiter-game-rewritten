@@ -230,8 +230,8 @@ button {
 }
 
 .fade-out {
-  animation: fade-out 1s linear;
-  visibility: hidden;
+  /* animation: fade-out 1s linear;
+  visibility: hidden; */
 }
 
 @keyframes fade-in {
@@ -244,8 +244,8 @@ button {
 }
 
 .fade-in {
-  animation: fade-in 0.8s linear;
-  visibility: visible;
+  /* animation: fade-in 0.8s linear;
+  visibility: visible; */
 }
 
 @keyframes pulse {

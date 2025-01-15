@@ -7,13 +7,16 @@ class Prestige {
       "enabled": false,
       "producing": new Decimal(0),
       "upgrade1": {
-        "bought": obj.upgrade1.perm ?? false
+        "bought": obj.upgrade1.perm ?? false,
+        "cost": obj.upgrade1.cost
       },
       "upgrade2": {
-        "bought": obj.upgrade2.perm ?? false
+        "bought": obj.upgrade2.perm ?? false,
+        "cost": obj.upgrade1.cost
       },
       "upgrade3": {
-        "bought": obj.upgrade3.perm ?? false
+        "bought": obj.upgrade3.perm ?? false,
+        "cost": obj.upgrade1.cost
       }
     };
   }

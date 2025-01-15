@@ -59,8 +59,8 @@ class Period1 {
     if (ups.upgrade2.bought)
       tmp = tmp.add(PRODUCERS.period1.producer1.amount.mul(0.5));
     if (elm.upgrade2.bought) {
-      let power = 1 + 0.1 * Math.log10(elm.amount);
-      power = Math.min(Math.max(1, power), 1.25);
+      let power = 1 + 0.1 * Math.log10(elm.amount.div(2));
+      power = Math.min(Math.max(1, power), 1.5);
       tmp = tmp.pow(power);
     }
     if (ACHIEVEMENTS[2].achieved) tmp = tmp.mul(1.05);

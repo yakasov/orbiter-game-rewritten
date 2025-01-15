@@ -15,21 +15,21 @@ const PERIOD2TAB = `
       <h4 class="alkali">Lithium</h4>
       <p id="p2-lithium-amount"></p>
       <button id="p2-lithium-button" onclick="P2.buyElement('lithium')"></button>
-      <p class="amount grey">+0.05x to all production</p>
+      <p class="amount grey">+0.2x to all production</p>
     </div>
 
     <div class="eighth-content-group center">
       <h4 class="alkaline">Beryllium</h4>
       <p id="p2-beryllium-amount"></p>
       <button id="p2-beryllium-button" onclick="P2.buyElement('beryllium')"></button>
-      <p class="amount grey">+1 to each producer base</p>
+      <p class="amount grey">+2 to each producer base</p>
     </div>
 
     <div class="eighth-content-group center">
       <h4 class="metalloid">Boron</h4>
       <p id="p2-boron-amount"></p>
       <button id="p2-boron-button" onclick="P2.buyElement('boron')"></button>
-      <p class="amount grey">-1 from all producer base costs</p>
+      <p class="amount grey">-2 from all producer base costs</p>
       </div>
 
     <div class="eighth-content-group center">
@@ -64,7 +64,7 @@ const PERIOD2TAB = `
       <h4 class="noble">Neon</h4>
       <p id="p2-neon-amount"></p>
       <button id="p2-neon-button" onclick="P2.buyElement('neon')"></button>
-      <p class="amount grey">+0.25x to all solids gain</p>
+      <p class="amount grey">+0.5x to all solids gain</p>
       </div>
   </div>
 </div>

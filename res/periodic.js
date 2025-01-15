@@ -13,17 +13,17 @@ const PERIODIC = {
 <b>You will only get this bonus if your matter is greater than ${f(
     PERIODIC.hydrogen.costFormula()
   )}.</b></p>
-<button class="scary" onclick="if (EC.matterBalance.gte(PERIODIC.hydrogen.costFormula())) PERIODIC.hydrogen.resets += 1; PR.resetPeriod1();">Reset Period 1</button>
+<button class="scary" onclick="if (EC.matterBalance.gte(PERIODIC.hydrogen.costFormula())) {PERIODIC.hydrogen.resets += 1; PERIODIC.hydrogen.total += 1} PR.resetPeriod1();">Reset Period 1</button>
 `;
     },
     get "htmlRight"() {
       return `
 <h3>Milestones</h3>
 <span class="less-height">
-  <p class="${PERIODIC.hydrogen.resets >= 2
+  <p class="${PERIODIC.hydrogen.total >= 2
     ? ""
     : "unachieved"}">2 Resets: Permanently produce Hydrogen</p>
-  <p class="${PERIODIC.hydrogen.resets >= 3
+  <p class="${PERIODIC.hydrogen.total >= 3
     ? ""
     : "unachieved"}">3 Resets: Keep all Hydrogen-related upgrades</p>
 </span>
@@ -38,21 +38,21 @@ const PERIODIC = {
       .mul(2 ** (PERIODIC.helium.resets + 1)),
     get "htmlLeft"() {
       return `
-<p>Bond your Helium atoms to Hydrogen atoms and form He<sup>+</sup>, burning through Period 1 costs and reducing producer scaling by ${((PERIODIC.helium.resets + 1) * 100) / (PERIODIC.helium.resets + 4)}%.<br>
+<p>Bond your Helium atoms to Hydrogen atoms and form He<sup>+</sup>, burning through Period 1 costs and reducing producer scaling by ${f(((PERIODIC.helium.resets + 1) * 100) / (PERIODIC.helium.resets + 4), 4)}%.<br>
 <b>You will only get this bonus if your matter is greater than ${f(
     PERIODIC.helium.costFormula()
   )}.</b></p>
-<button class="scary" onclick="if (EC.matterBalance.gte(PERIODIC.helium.costFormula())) PERIODIC.helium.resets += 1; PR.resetPeriod1();">Reset Period 1</button>
+<button class="scary" onclick="if (EC.matterBalance.gte(PERIODIC.helium.costFormula())) {PERIODIC.helium.resets += 1; PERIODIC.helium.total += 1} PR.resetPeriod1();">Reset Period 1</button>
 `;
     },
     get "htmlRight"() {
       return `
 <h3>Milestones</h3>
 <span class="less-height">
-  <p class="${PERIODIC.helium.resets >= 2
+  <p class="${PERIODIC.helium.total >= 2
     ? ""
     : "unachieved"}">2 Resets: Permanently produce Helium</p>
-  <p class="${PERIODIC.helium.resets >= 3
+  <p class="${PERIODIC.helium.total >= 3
     ? ""
     : "unachieved"}">3 Resets: Keep all Helium-related upgrades</p>
 </span>

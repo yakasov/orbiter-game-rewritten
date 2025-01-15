@@ -19,17 +19,19 @@ let elementsTabUnlocked = false;
 let period2Unlocked = false;
 
 function f(n, decimals = 2) {
+  let nd = n;
   if (typeof n === "string" || !n) return n;
-  if (n.lt(1e3)) return n.toFixed(decimals);
+  if (typeof n === "number") nd = new Decimal(n);
+  if (nd.lt(1e3)) return n.toFixed(decimals);
 
-  const ns = n.toString();
+  const ns = nd.toString();
 
   function getLength(nn) {
     return nn.toString()
       .split(".")[0].length;
   }
 
-  if (n.lt(1e6)) {
+  if (nd.lt(1e6)) {
     const half1 = ns.slice(0, getLength(ns) - 3);
     const half2 = ns.slice(getLength(ns) - 3, getLength(ns));
     return `${half1},${half2}`;

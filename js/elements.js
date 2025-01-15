@@ -18,12 +18,12 @@ class Elements {
   }
 
   checkMilestones() {
-    if (PERIODIC.hydrogen.resets >= 2) {
+    if (PERIODIC.hydrogen.total >= 2) {
       ELEMENTS.hydrogen.enabled = true;
       EC.buyUpgrade(1, 1, 3, true);
     }
 
-    if (PERIODIC.hydrogen.resets >= 3) {
+    if (PERIODIC.hydrogen.total >= 3) {
       EC.buyUpgrade(1, 1, 1, true);
       EC.buyUpgrade(1, 1, 2, true);
 
@@ -34,12 +34,12 @@ class Elements {
       currentTab = t;
     }
 
-    if (PERIODIC.helium.resets >= 2) {
+    if (PERIODIC.helium.total >= 2) {
       ELEMENTS.helium.enabled = true;
       EC.buyUpgrade(1, 2, 3, true);
     }
 
-    if (PERIODIC.helium.resets >= 3) {
+    if (PERIODIC.helium.total>= 3) {
       EC.buyUpgrade(1, 2, 1, true);
       EC.buyUpgrade(1, 2, 2, true);
 
